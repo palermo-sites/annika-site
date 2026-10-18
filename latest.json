@@ -1,0 +1,47 @@
+{
+  "currentWeek": {
+    "end": "2026-10-19T00:00:00Z",
+    "metrics": {
+      "deployments": {
+        "preview": {
+          "count": 5,
+          "failed": 0,
+          "failedShare": 0.0
+        },
+        "prod": {
+          "count": 6,
+          "failed": 0,
+          "failedShare": 0.0
+        }
+      },
+      "itemsDelivered": 7,
+      "itemsStarted": 9,
+      "itemsStopped": 0,
+      "mttdDays": 0.001,
+      "netThroughput": 39,
+      "progress": 39,
+      "rework": 0,
+      "wip": 1
+    },
+    "start": "2026-10-12T00:00:00Z",
+    "week": "2026-W42"
+  },
+  "lastWeek": null,
+  "name": "Annika Palermo",
+  "report": "index.html",
+  "repository": "palermo-sites/annika-site",
+  "rolling12": {
+    "from": null,
+    "itemsDelivered": 0,
+    "itemsStarted": 0,
+    "mttdDays": null,
+    "prodDeployments": 0,
+    "prodFailed": 0,
+    "prodFailedShare": null,
+    "to": null,
+    "weeks": 0,
+    "wip": 0
+  },
+  "schemaVersion": 1,
+  "system": "annika"
+}

@@ -1,3 +1,20 @@
-# Weekly delivery scorecard
+# Scorecard: Annika Palermo (`annika`)
 
-Written by `.github/workflows/scorecard.yml` on the default branch. `latest/summary.md` is the newest week; `weekly/<ISO week>/` keeps every run; `history.csv` has one row per run week and scorecard week.
+Weekly delivery numbers (ISO weeks, Monday 00:00 UTC). Written by `.github/scorecard/scorecard.py` on the default branch; do not edit. HTML: `index.html`.
+
+| Metric | 2026-W42 (so far) |
+|---|---|
+| Items started | 9 |
+| Items delivered | 7 |
+| Work in process | 1 |
+| Mean time to delivery (days) | 0.001 |
+| Progress / rework | 39 / 0 |
+| Prod deployments (failed) | 6 (0) |
+| Preview deployments (failed) | 5 (0) |
+
+## Rolling 12 (0 finished week(s))
+
+- Items started: 0, delivered: 0, work in process: 0
+- Mean time to delivery: – (mean of weekly means)
+- Prod deployments: 0, failed: 0, failed share: –
+
