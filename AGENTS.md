@@ -11,7 +11,7 @@ Rules for AI agent sessions (and people) changing the website system `annika` (a
    at http://localhost:4321.
 4. **Push the branch and open a pull request** into `main`. Describe what changed in plain words.
 5. **Wait for the checks and UAT.** Workflow `ci` builds the site and checks HTML and links. Workflow `uat` deploys the
-   pull request to the UAT site, https://palermo-sites.github.io/annika-site-uat/, and comments that URL on the pull
+   pull request to the UAT site, https://uat.annikapalermo.com/, and comments that URL on the pull
    request. There is one UAT site: the newest push (any pull request, or `main`) replaces it. If another change took it
    over, push again or run workflow `uat` on your branch.
 6. **Review in UAT** (give the URL to Annika). Fix anything on the same branch; UAT updates.
