@@ -1,0 +1,9 @@
+{
+  "owner": "palermo-sites",
+  "connections": [
+    {
+      "id": "annika-site",
+      "repo": "annika-site"
+    }
+  ]
+}
