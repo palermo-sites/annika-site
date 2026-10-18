@@ -50,7 +50,7 @@ def table(cols, envs):
             r('Forward moves', k('forwardMoves')), r('Rework', k('rework')), r('Net throughput', k('netThroughput'))]
     for e in envs:
         d = lambda a, f, e=e: a['deployments'].get(e, {}).get(f)
-        rows += [g(f'Deployments: {e}'), r('Deployments', lambda a, d=d: n(d(a, 'count') or 0)),
+        rows += [g(f'Deployments: {e.upper() if e == "uat" else e}'), r('Deployments', lambda a, d=d: n(d(a, 'count') or 0)),
                  r('Failed', lambda a, d=d: f'<b>{d(a, "failed")}</b>' if d(a, 'failed') else '0'),
                  r('Failed share', lambda a, d=d: pct(d(a, 'failedShare')))]
     rows += [g('Waste'), r('Items stopped (off the plate without delivery)', k('itemsStopped'))]
@@ -61,7 +61,7 @@ def table(cols, envs):
 def sections(daily):
     days, today = daily['days'], daily.get('today')
     allx = days + ([today] if today else [])
-    envs = sorted({e for x in allx for e in x.get('deployments', {})}, key=lambda e: (e != 'prod', e))
+    envs = views.env_order({e for x in allx for e in x.get('deployments', {})})
     tdate = dt.date.fromisoformat(today['date']) if today else dt.date.today()
     v = views.named_views(days, tdate)
     span = lambda a: f'<br>{esc(a["from"])} – {esc(a["to"])}' if a['from'] else '<br>no finished day'
@@ -74,6 +74,10 @@ def sections(daily):
         gs = list(reversed(views.group(allx, by)))[:keep]
         cur = views.key(today, by) if today else None
         out.append((title, table([(esc(gv['label']) + (' (so far)' if gv['label'] == cur else '') + f'<br>{gv["days"]} d', gv) for gv in gs], envs)))
+    hrs = views.hours(allx, last=48)
+    out.append(('By hour (48 hours up to the latest recorded hour, newest first)', table([(esc(h['label'][5:]), views.aggregate([h], h['label'])) for h in reversed(hrs)], envs)))
+    prof = views.hour_profile(views.hours(allx))
+    out.append(('Hour-of-day profile (all days, America/New_York)', table([(esc(a['label']), a) for a in prof if a['days']], envs)))
     gs = list(reversed(views.group(allx, 'day')))[:14]
     out.append(('By day (last 14)', table([(esc(gv['label']) + (' (so far)' if today and gv['label'] == today['date'] else ''), gv) for gv in gs], envs)))
     return out
@@ -82,7 +86,7 @@ def sections(daily):
 NOTE = ('Days are calendar days in America/New_York; weeks are ISO weeks of those days. "So far" is provisional until the day closes; '
         'rolling views end with yesterday. Counts are sums; work in process is the last day\'s end-of-day value; mean time to '
         'delivery is total delivery time / items delivered; failed share is failed / deployments. Deployments are GitHub Actions '
-        'runs (deploy.yml on main = prod, staging.yml on pull requests = preview); no Azure or Octopus Deploy.')
+        'runs (deploy.yml on main = prod, staging.yml on pull requests = UAT); no Azure or Octopus Deploy.')
 
 
 def page(daily, stamp, run_url):

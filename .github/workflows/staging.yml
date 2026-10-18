@@ -24,7 +24,7 @@ jobs:
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
     runs-on: ubuntu-24.04
     environment:
-      name: preview
+      name: uat
       url: ${{ steps.swa.outputs.static_web_app_url }}
     steps:
       - uses: actions/checkout@v4

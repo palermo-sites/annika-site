@@ -7,7 +7,66 @@ number of delivered items with a known start (never an average of averages); fai
 """
 import datetime as dt
 
+ENV_ALIASES = {'preview': 'uat'}  # the UAT environment was called preview before 2026-10-18; read old facts under the new name
+
+
+def env_name(e):
+    return ENV_ALIASES.get(e, e)
+
+
+def env_order(envs):
+    """UAT before prod, then any other environment alphabetically."""
+    rank = {'uat': 0, 'prod': 1}
+    return sorted({env_name(e) for e in envs}, key=lambda e: (rank.get(e, 2), e))
+
+
 ADDITIVE = ('itemsStarted', 'itemsDelivered', 'forwardMoves', 'rework', 'netThroughput', 'itemsStopped')
+
+
+def hours(days, last=None, now=None):
+    """Hour records (oldest first) of the given days, with quiet hours filled in: zero counts, work in process carried
+    from the previous hour. A record: {label, hour (ISO, local offset), hourOfDay, counts, delivery, deployments}.
+    `last`: keep only the last N hours, ending with the hour of `now` (an aware datetime) when given."""
+    import zoneinfo
+    tz = zoneinfo.ZoneInfo('America/New_York')
+    by = {h['hour']: h for x in days for h in x.get('hours', [])}
+    if not days:
+        return []
+    start = dt.datetime.fromisoformat(days[0]['date'] + 'T00:00').replace(tzinfo=tz).astimezone(dt.timezone.utc)
+    end_day = dt.date.fromisoformat(days[-1]['date']) + dt.timedelta(days=1)
+    end = dt.datetime.combine(end_day, dt.time(), tz).astimezone(dt.timezone.utc)
+    if now is not None:
+        end = min(end, now.astimezone(dt.timezone.utc).replace(minute=0, second=0, microsecond=0) + dt.timedelta(hours=1))
+    out, wip, t = [], 0, start
+    while t < end:
+        lt = t.astimezone(tz)
+        k = lt.isoformat(timespec='minutes')
+        h = by.get(k)
+        if h:
+            wip = h['counts'].get('wipEndOfHour', wip)
+            rec = dict(h)
+        else:
+            rec = {'hour': k, 'hourOfDay': lt.hour, 'label': lt.strftime('%Y-%m-%d %H:00 ') + ('EDT' if lt.dst() else 'EST'),
+                   'counts': {a: 0 for a in ADDITIVE}, 'delivery': {'count': 0, 'durationSumDays': 0}, 'deployments': {}}
+        rec['counts'] = dict(rec['counts'], wipEndOfDay=wip)  # the hour's end value, under the name aggregate() reads
+        rec['date'] = rec['label'][:10]
+        rec['quiet'] = h is None
+        out.append(rec)
+        t += dt.timedelta(hours=1)
+    if now is None:  # end with the last recorded hour, so the output depends on the data only
+        while out and out[-1]['quiet']:
+            out.pop()
+    return out[-last:] if last else out
+
+
+def hour_profile(hour_records):
+    """Hour-of-day profile (0-23, America/New_York): additive counts summed across days; WIP is not meaningful here."""
+    out = []
+    for hod in range(24):
+        a = aggregate([h for h in hour_records if h['hourOfDay'] == hod], f'{hod:02d}:00')
+        a['counts']['wipEndOfDay'] = None
+        out.append(a)
+    return out
 
 
 def key(day, by):
@@ -24,7 +83,7 @@ def aggregate(days, label=''):
     out['delivery'] = {'count': n, 'durationSumDays': round(s, 6), 'mttdDays': round(s / n, 4) if n else None}
     for x in days:
         for e, v in x.get('deployments', {}).items():
-            d = out['deployments'].setdefault(e, {'count': 0, 'failed': 0})
+            d = out['deployments'].setdefault(env_name(e), {'count': 0, 'failed': 0})
             d['count'] += v['count']
             d['failed'] += v['failed']
     for d in out['deployments'].values():
