@@ -71,3 +71,4 @@ Grouping rules: counts are summed; MTTD = total delivery time / items delivered 
 the last day's value; failed share = failed / deployments. Each run shows the report on its Summary page and uploads the styled
 HTML as the artifact `scorecard-report`. A rerun with unchanged numbers commits nothing.
 Secret: `SCORECARD_SOURCE_TOKEN` (read access to the scorecard source, to build cmis).
+<!-- uat test -->
