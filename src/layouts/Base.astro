@@ -2,6 +2,7 @@
 interface Props { title: string; description?: string }
 const { title, description = 'Annika Palermo' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const path = Astro.url.pathname.slice(base.length) || '/';
 ---
 <!doctype html>
 <html lang="en">
@@ -10,7 +11,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{title}</title>
     <meta name="description" content={description}>
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)}>
+    <link rel="canonical" href={new URL(path, Astro.site)}>
     <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml">
   </head>
   <body>
