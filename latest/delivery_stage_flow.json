@@ -1,0 +1,226 @@
+{
+  "harvested": true,
+  "scope": {
+    "repository": null,
+    "wholeSystem": true,
+    "repositories": [
+      "annika-site"
+    ]
+  },
+  "items": "all",
+  "automationItemsLeftOut": 0,
+  "windowDays": 14,
+  "attentionFactor": 2,
+  "blockingFactor": 5,
+  "groups": [
+    {
+      "repositories": [
+        "annika-site"
+      ],
+      "windowSince": "2026-10-04T16:25:20.8156914+00:00",
+      "windowUntil": "2026-10-18T16:25:20.8156914+00:00",
+      "stages": [
+        {
+          "stage": "Created",
+          "itemsNow": 0,
+          "items": [],
+          "medianHoursInStage": null,
+          "averageHoursInStage": null,
+          "staysInWindow": 0,
+          "skippedInWindow": 8,
+          "oldestCurrentItemHours": null,
+          "state": "normal"
+        },
+        {
+          "stage": "Development",
+          "itemsNow": 0,
+          "items": [],
+          "medianHoursInStage": 0,
+          "averageHoursInStage": 0,
+          "staysInWindow": 2,
+          "skippedInWindow": 6,
+          "oldestCurrentItemHours": null,
+          "state": "normal"
+        },
+        {
+          "stage": "In Review",
+          "itemsNow": 0,
+          "items": [],
+          "medianHoursInStage": 0.11,
+          "averageHoursInStage": 0.11,
+          "staysInWindow": 1,
+          "skippedInWindow": 6,
+          "oldestCurrentItemHours": null,
+          "state": "normal"
+        },
+        {
+          "stage": "Merged",
+          "itemsNow": 7,
+          "items": [
+            {
+              "repository": "annika-site",
+              "number": 934809
+            },
+            {
+              "repository": "annika-site",
+              "number": 926905
+            },
+            {
+              "repository": "annika-site",
+              "number": 903837
+            },
+            {
+              "repository": "annika-site",
+              "number": 976665
+            },
+            {
+              "repository": "annika-site",
+              "number": 981952
+            },
+            {
+              "repository": "annika-site",
+              "number": 989727
+            },
+            {
+              "repository": "annika-site",
+              "number": 2
+            }
+          ],
+          "medianHoursInStage": null,
+          "averageHoursInStage": null,
+          "staysInWindow": 0,
+          "skippedInWindow": 0,
+          "oldestCurrentItemHours": 11.57,
+          "state": "normal"
+        }
+      ],
+      "moves": [
+        {
+          "from": "Created",
+          "to": "Development",
+          "medianHours": null,
+          "averageHours": null,
+          "items": 8,
+          "timedItems": 0,
+          "skippedItems": 8,
+          "itemList": [
+            {
+              "repository": "annika-site",
+              "number": 2
+            },
+            {
+              "repository": "annika-site",
+              "number": 1
+            },
+            {
+              "repository": "annika-site",
+              "number": 989727
+            },
+            {
+              "repository": "annika-site",
+              "number": 981952
+            },
+            {
+              "repository": "annika-site",
+              "number": 976665
+            },
+            {
+              "repository": "annika-site",
+              "number": 903837
+            },
+            {
+              "repository": "annika-site",
+              "number": 926905
+            },
+            {
+              "repository": "annika-site",
+              "number": 934809
+            }
+          ]
+        },
+        {
+          "from": "Development",
+          "to": "In Review",
+          "medianHours": 0,
+          "averageHours": 0,
+          "items": 8,
+          "timedItems": 2,
+          "skippedItems": 6,
+          "itemList": [
+            {
+              "repository": "annika-site",
+              "number": 2
+            },
+            {
+              "repository": "annika-site",
+              "number": 1
+            },
+            {
+              "repository": "annika-site",
+              "number": 989727
+            },
+            {
+              "repository": "annika-site",
+              "number": 981952
+            },
+            {
+              "repository": "annika-site",
+              "number": 976665
+            },
+            {
+              "repository": "annika-site",
+              "number": 903837
+            },
+            {
+              "repository": "annika-site",
+              "number": 926905
+            },
+            {
+              "repository": "annika-site",
+              "number": 934809
+            }
+          ]
+        },
+        {
+          "from": "In Review",
+          "to": "Merged",
+          "medianHours": 0.11,
+          "averageHours": 0.11,
+          "items": 7,
+          "timedItems": 1,
+          "skippedItems": 6,
+          "itemList": [
+            {
+              "repository": "annika-site",
+              "number": 2
+            },
+            {
+              "repository": "annika-site",
+              "number": 989727
+            },
+            {
+              "repository": "annika-site",
+              "number": 981952
+            },
+            {
+              "repository": "annika-site",
+              "number": 976665
+            },
+            {
+              "repository": "annika-site",
+              "number": 903837
+            },
+            {
+              "repository": "annika-site",
+              "number": 926905
+            },
+            {
+              "repository": "annika-site",
+              "number": 934809
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

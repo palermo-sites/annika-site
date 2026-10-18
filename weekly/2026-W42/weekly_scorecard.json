@@ -1,0 +1,29 @@
+{
+  "harvested": true,
+  "scope": {
+    "repository": null,
+    "wholeSystem": true,
+    "repositories": [
+      "annika-site"
+    ]
+  },
+  "items": "all",
+  "automationItemsLeftOut": 0,
+  "scorecardId": "delivery",
+  "metricSet": "All items",
+  "error": null,
+  "weeks": [
+    {
+      "periodLabel": "W42 2026-10-12",
+      "weekStart": "2026-10-12T00:00:00+00:00",
+      "itemsDelivered": 7,
+      "throughput": 23,
+      "rework": 0,
+      "netThroughput": 23,
+      "itemsStarted": 8,
+      "workInProcess": 0,
+      "meanTimeToDeliveryHours": 0.02,
+      "closedNotDelivered": 0
+    }
+  ]
+}

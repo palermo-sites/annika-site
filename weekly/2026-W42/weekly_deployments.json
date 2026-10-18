@@ -1,0 +1,13 @@
+{
+  "harvested": true,
+  "scope": {
+    "repository": null,
+    "wholeSystem": true,
+    "repositories": [
+      "annika-site"
+    ]
+  },
+  "totalDeployments": 0,
+  "totalFailed": 0,
+  "weeks": []
+}
