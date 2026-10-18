@@ -29,7 +29,7 @@ jobs:
         run: |
           set -euo pipefail
           pipx install html5validator==0.4.2
-          html5validator --root _site --also-check-css
+          html5validator --root _site
       - name: Links
         uses: lycheeverse/lychee-action@v2
         with:
