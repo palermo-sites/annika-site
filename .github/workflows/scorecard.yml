@@ -1,6 +1,6 @@
 # Daily delivery scorecard of this website system (the site is the system level of the platform; website-platform-kit
 # docs/scorecard-pilot.md, decisions 0005 and 0006). One fact file per America/New_York calendar day. GitHub only: no Azure, no Octopus Deploy. GitHub Actions runs are the
-# deployments (deploy.yml on main = prod, staging.yml on pull requests = UAT). Numbers and the HTML report go to the
+# deployments (deploy.yml on main = prod, uat.yml = UAT; staging.yml pull request runs before 2026-10-18 also count as UAT). Numbers and the HTML report go to the
 # data branch scorecard-data, so main (which publishes the site) is never touched; the HTML is also the artifact
 # scorecard-report. Idempotent: a rerun with the same numbers commits nothing.
 name: Daily scorecard

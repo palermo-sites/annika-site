@@ -6,16 +6,17 @@ Website system `annika` on the palermo-sites website platform, built with [Astro
 Owner: Jeffrey Palermo. Final domain: annikapalermo.com (not yet connected; see below).
 
 - Live (prod, GitHub Pages): https://palermo-sites.github.io/annika-site/
-- Staging (stable, not indexed): https://thankful-island-0db965a0f.3.azurestaticapps.net (branch `staging`)
-- Pull request previews: each pull request gets its own URL, posted as a comment on it (Azure Static Web Apps,
-  `rg-palermo-sites-sites/annika-site-staging`, Free tier: up to 3 previews at once).
+- UAT (GitHub Pages, not indexed): https://palermo-sites.github.io/annika-site-uat/, served by
+  [palermo-sites/annika-site-uat](https://github.com/palermo-sites/annika-site-uat) (branch `gh-pages`, written only by
+  workflow `uat`). Every push to a pull request and every push to `main` replaces it; the URL is commented on the pull request.
 
 ## How changes get published
 
-Branch, open a pull request, review its preview URL, merge to publish. Details for people and AI agents: [AGENTS.md](AGENTS.md).
-Staging and previews build with base `/`, a `noindex` meta tag, an `X-Robots-Tag: noindex` header and a robots.txt
-that disallows everything (`staging/`). To refresh the stable staging URL, push to the `staging` branch
-(`git push origin main:staging` mirrors main).
+Branch, open a pull request, review it in UAT, merge to publish. Details for people and AI agents: [AGENTS.md](AGENTS.md).
+UAT builds with base `/annika-site-uat`, a `noindex` meta tag, a "UAT, not live" banner and no sitemap (GitHub Pages
+cannot send headers or a root robots.txt for a project site). There is **one** UAT site: the newest pull request push or
+`main` push wins, so with two open pull requests UAT shows whichever pushed last (push again, or run workflow `uat` by
+hand, to put yours back). Credential: secret `UAT_DEPLOY_KEY`, a deploy key with write access to `annika-site-uat` only.
 - `src/content/designs/` design notes (blog posts) and `src/content/portfolio/` finished gowns: Astro content collections
   (schemas in `src/content.config.ts`). Add a Markdown file to add a post or a piece.
 - `src/pages/` Home, Designs (index and posts), Portfolio (index and pieces), About, Contact (static placeholder form;
@@ -55,7 +56,7 @@ resolve. When ready:
 scorecard → Run workflow, with an optional backfill range `days` and `force`). The site is the system level of the platform,
 so its scorecard lives here (kit decisions 0005, 0006). GitHub only, no Azure or Octopus Deploy: items and stage moves come from
 cmis over this repository's issues, pull requests and commits; deployments are GitHub Actions runs in environment order UAT, then prod (`deploy.yml` on `main` = prod,
-`staging.yml` on pull requests = UAT), configured in `.github/scorecard/config.json`.
+`uat.yml` = UAT; older `staging.yml` pull request runs count as UAT too), configured in `.github/scorecard/config.json`.
 
 A day is a calendar day in America/New_York. Output goes to the `scorecard-data` branch, never to `main`:
 
