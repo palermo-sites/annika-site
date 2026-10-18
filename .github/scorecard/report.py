@@ -123,6 +123,57 @@ def system_report(slug, weeks, latest, stamp, run_url):
     return page(f'Scorecard: {(latest or {}).get("name", slug)}', sub, body, stamp, run_url)
 
 
+def summary_html(slug, weeks, latest, artifact_url, run_url):
+    """The full report in the HTML GitHub renders on a run's Summary page (no CSS, no scripts)."""
+    recent = list(reversed(weeks[-12:]))
+    cols = ([dict(latest['currentWeek'], provisional=True)] if latest and latest.get('currentWeek') else []) + recent
+    r12 = (latest or {}).get('rolling12') or {}
+    last12 = weeks[-12:]
+    envs = sorted({e for w in cols for e in w['metrics'].get('deployments', {})}, key=lambda e: (e != 'prod', e))
+    n = lambda v, d=0: '–' if v is None else (f'{v:.{d}f}' if d else str(v))
+    p = lambda v: '–' if v is None else (f'<b>{v*100:.0f}%</b>' if v > 0 else '0%')
+    total = lambda k: sum(w['metrics'].get(k, 0) for w in last12)
+
+    def row(label, f, r):
+        return '<tr><td>' + label + '</td>' + ''.join(f'<td align="right">{f(w["metrics"])}</td>' for w in cols) + f'<td align="right"><b>{r}</b></td></tr>'
+
+    def group(label):
+        return f'<tr><th colspan="{len(cols) + 2}" align="left">{esc(label)}</th></tr>'
+
+    head = ''.join(f'<th>{esc(w["week"])}{" (so far)" if w.get("provisional") else ""}<br>{dt.date.fromisoformat(w["start"][:10]):%b %d}</th>' for w in cols)
+    rows = [group('Flow'),
+            row('Items started', lambda m: n(m.get('itemsStarted')), n(r12.get('itemsStarted'))),
+            row('Items delivered', lambda m: n(m.get('itemsDelivered')), n(r12.get('itemsDelivered'))),
+            row('Work in process (end of week)', lambda m: n(m.get('wip')), n(r12.get('wip'))),
+            row('Mean time to delivery (days)', lambda m: n(m.get('mttdDays'), 3), n(r12.get('mttdDays'), 3)),
+            row('Forward moves', lambda m: n(m.get('progress')), n(total('progress'))),
+            row('Rework', lambda m: n(m.get('rework')), n(total('rework'))),
+            row('Net throughput', lambda m: n(m.get('netThroughput')), n(total('netThroughput')))]
+    for e in envs:
+        d = lambda m, k, e=e: m.get('deployments', {}).get(e, {}).get(k)
+        c = sum(w['metrics'].get('deployments', {}).get(e, {}).get('count', 0) for w in last12)
+        fl = sum(w['metrics'].get('deployments', {}).get(e, {}).get('failed', 0) for w in last12)
+        rows += [group(f'Deployments: {e}'),
+                 row('Deployments', lambda m, d=d: n(d(m, 'count') or 0), n(c)),
+                 row('Failed', lambda m, d=d: (f'<b>{d(m, "failed")}</b>' if d(m, 'failed') else '0'), n(fl)),
+                 row('Failed share', lambda m, d=d: p(d(m, 'failedShare')), p(fl / c if c else None))]
+    rows += [group('Waste'), row('Items stopped (taken off the plate without delivery)', lambda m: n(m.get('itemsStopped')), n(total('itemsStopped')))]
+    last = (latest or {}).get('lastWeek')
+    out = [f'<h2>Delivery scorecard: {esc((latest or {}).get("name", slug))}</h2>', '',
+           f'<p><b>Last finished week:</b> {esc(last["week"]) if last else "–"} · <b>Rolling 12:</b> {r12.get("weeks", 0)} finished week(s), '
+           f'{n(r12.get("itemsDelivered"))} delivered, MTTD {n(r12.get("mttdDays"), 3)} days, {n(r12.get("prodDeployments"))} prod deploys, failed share {p(r12.get("prodFailedShare"))}</p>', '',
+           '<table><thead><tr><th>Metric</th>' + head + f'<th>Rolling 12<br>{r12.get("weeks", 0)} finished wk</th></tr></thead><tbody>'
+           + ''.join(rows) + '</tbody></table>', '',
+           '<details><summary>How to read this</summary>', '',
+           '<p>Newest week first. "So far" is the current week, provisional until it closes (ISO weeks, Monday 00:00 UTC). Rolling 12 covers finished weeks only: '
+           'sums for counts, the last week for work in process, the mean of weekly means for MTTD. Deployments are GitHub Actions runs '
+           '(deploy.yml on main = prod, staging.yml on pull requests = preview); no Azure or Octopus Deploy.</p>', '</details>', '',
+           '<h3>Report</h3>', '',
+           '<p>Styled HTML: artifact <b>scorecard-report</b>' + (f' (<a href="{esc(artifact_url)}">download</a>)' if artifact_url else '')
+           + ', and <code>index.html</code> on the <code>scorecard-data</code> branch.</p>', '']
+    return '\n'.join(out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--data', required=True)
@@ -143,26 +194,8 @@ def main():
             target.write_text(text)
             changed.append(str(target))
     if a.summary:
-        cw = (latest or {}).get('currentWeek') or {}
-        mm = cw.get('metrics') or {}
-        dep = mm.get('deployments', {})
-        r12 = (latest or {}).get('rolling12') or {}
-        lw = (latest or {}).get('lastWeek')
-        lm = (lw or {}).get('metrics') or {}
-        lines = [f'## Delivery scorecard: {(latest or {}).get("name", slug)}', '',
-                 '| | Week | Started | Delivered | WIP | MTTD days | Prod deploys (failed) | Preview deploys (failed) |', '|---|---|---|---|---|---|---|---|']
-        def line(label, wk, m):
-            d = m.get('deployments', {})
-            return (f'| {label} | {wk} | {m.get("itemsStarted", "–")} | {m.get("itemsDelivered", "–")} | {m.get("wip", "–")} | {"–" if m.get("mttdDays") is None else m["mttdDays"]} | '
-                    f'{d.get("prod", {}).get("count", 0)} ({d.get("prod", {}).get("failed", 0)}) | {d.get("preview", {}).get("count", 0)} ({d.get("preview", {}).get("failed", 0)}) |')
-        lines.append(line('So far', cw.get('week', '–'), mm))
-        lines.append(line('Last finished', lw['week'], lm) if lw else '| Last finished | – | | | | | | |')
-        lines.append(f'| Rolling 12 | {r12.get("weeks", 0)} wk | {r12.get("itemsStarted", 0)} | {r12.get("itemsDelivered", 0)} | {r12.get("wip", 0)} | {"–" if r12.get("mttdDays") is None else r12["mttdDays"]} | '
-                     f'{r12.get("prodDeployments", 0)} ({r12.get("prodFailed", 0)}) | |')
-        lines += ['', 'HTML report: artifact **scorecard-report**' + (f' ([download]({a.artifact_url}))' if a.artifact_url else '')
-                  + ', and `index.html` on the `scorecard-data` branch.', '']
         with open(a.summary, 'a') as f:
-            f.write('\n'.join(lines))
+            f.write(summary_html(slug, weeks, latest, a.artifact_url, run_url))
     print('report changed:', ', '.join(changed) or 'nothing')
 
 

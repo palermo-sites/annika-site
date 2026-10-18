@@ -62,5 +62,5 @@ Output goes to the `scorecard-data` branch, never to `main`:
 - `latest.json`: last finished week, the current week so far, and Rolling 12 (read by the platform dashboard)
 - `index.html` and `README.md`: the report (recent weeks, newest first, plus Rolling 12)
 
-Each run also uploads the HTML as the artifact `scorecard-report` and writes a job summary. A rerun with unchanged numbers commits nothing.
+Each run shows the full report (all rows, so far + recent weeks + Rolling 12) on its Summary page in the Actions UI, and uploads the styled HTML as the artifact `scorecard-report`. A rerun with unchanged numbers commits nothing.
 Secret: `SCORECARD_SOURCE_TOKEN` (read access to the scorecard source, to build cmis).
