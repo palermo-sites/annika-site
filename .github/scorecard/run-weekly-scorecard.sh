@@ -6,6 +6,15 @@
 set -euo pipefail
 : "${SCORECARD_DLL:?}" "${OUT_DIR:?}" "${HARVEST_TOKEN:?}"
 SINCE_DAYS="${SINCE_DAYS:-84}"; PORT="${PORT:-8089}"; SYSTEM_NAME="${SYSTEM_NAME:-system}"
+# Without connections.json, a kit system's system.json names them: the system repository and every deployable,
+# paired with the Octopus project <slug>-<deployable>.
+if [ -n "${CONNECTIONS_FILE:-}" ] && [ ! -f "$CONNECTIONS_FILE" ] && [ -f "${SYSTEM_JSON:-}" ]; then
+  jq '.system.slug as $slug | {owner:.system.githubOrg, octopusServer:.octopus.url, octopusSpace:.octopus.spaceId,
+       connections:([{id:"system", repo:.system.repository, octopusProject:($slug+"-system")}]
+         + [.deployables[] | {id:.name, repo:.repository, octopusProject:(.octopusProject // ($slug+"-"+.name))}])}' "$SYSTEM_JSON" \
+    > "${RUNNER_TEMP:-/tmp}/connections.json"
+  CONNECTIONS_FILE="${RUNNER_TEMP:-/tmp}/connections.json"
+fi
 # Connections: a JSON file {"owner":..,"octopusServer":..,"octopusSpace":..,"connections":[{"id","repo","octopusProject"?,"environments"?}]}
 if [ -n "${CONNECTIONS_FILE:-}" ]; then
   export Scorecard__Defaults__Owner="$(jq -r .owner "$CONNECTIONS_FILE")"
@@ -15,7 +24,7 @@ if [ -n "${CONNECTIONS_FILE:-}" ]; then
   for i in $(seq 0 $((n-1))); do
     c="$(jq -c ".connections[$i]" "$CONNECTIONS_FILE")"
     export "Scorecard__Connections__${i}__Id=$(jq -r .id <<<"$c")" "Scorecard__Connections__${i}__Name=$(jq -r '.name // .repo' <<<"$c")"
-    export "Scorecard__Connections__${i}__Repo=$(jq -r .repo <<<"$c")" "Scorecard__Connections__${i}__OctopusProject=$(jq -r '.octopusProject // ""' <<<"$c")"
+    export "Scorecard__Connections__${i}__Repo=$(jq -r .repo <<<"$c")" "Scorecard__Connections__${i}__OctopusProject=$( [ -n "${OCTOPUS_KEY:-}" ] && jq -r '.octopusProject // ""' <<<"$c" )"
     export "Scorecard__Connections__${i}__Enabled=true"
     [ "$(jq -r '.environments // ""' <<<"$c")" = "" ] || export "Scorecard__Connections__${i}__Environments=$(jq -r .environments <<<"$c")"
   done
