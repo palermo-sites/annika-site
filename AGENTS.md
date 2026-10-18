@@ -22,16 +22,18 @@ If a check fails, read its log, fix it on the branch, and push again. Do not byp
 
 ## Where things are
 
-- Gowns: one Markdown file per gown in `src/content/portfolio/`. Design notes (blog posts): `src/content/designs/`.
-  Front matter fields are defined in `src/content.config.ts`; copy an existing file as a starting point.
-- Pages: `src/pages/`. Shared layout, SEO and Open Graph: `src/layouts/Base.astro`. Styles: `src/styles/global.css`.
-- Images: `public/images/`; reference them by file name in front matter. Only use images you have the right to use, and
-  record credits in README.md.
+- Dresses and collections: one Markdown file per project in `src/content/projects/`. Front matter fields are defined in
+  `src/content.config.ts`; copy an existing file as a starting point. The home grid lays out however many files exist.
+- Pages: `src/pages/`. Home is the sketchbook grid. Each project has its own page. Shared layout, SEO and Open Graph:
+  `src/layouts/Base.astro`. Styles: `src/styles/global.css`.
+- Images: `public/images/`. Optional hover-preview and project videos: `public/videos/`. Reference them by file name in
+  front matter. Only use images you have the right to use, and record credits in README.md.
 - Links inside pages must use `url('/path/')` from `src/lib.ts` so they work under any base path.
 
 ## Rules
 
 - No secrets in files, commits or pull requests.
 - Do not edit `.github/workflows/` without asking Jeffrey: they are the platform's delivery pipeline.
-- The contact form must stay a placeholder (sends nothing) until a real form service is chosen.
+- There is no contact page. If a contact form is added, it must stay a placeholder (sends nothing) until a real form
+  service is chosen.
 - Keep the site accessible: alt text for every meaningful image, headings in order, visible focus.

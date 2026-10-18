@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { img, url, vid } from '../../lib';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects')).sort(
+    (a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title),
+  );
+  return projects.map((project, i) => ({
+    params: { id: project.id },
+    props: {
+      project,
+      next: projects.length > 1 ? projects[(i + 1) % projects.length] : null,
+    },
+  }));
+}
+
+const { project, next } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+const bits = [d.kind, d.year, d.placeholder ? 'Placeholder study' : null].filter(Boolean);
+---
+<Base title={d.title} description={d.description} type="article" accent={d.accent} placeholder={d.placeholder}>
+  <article class="project" style={`--accent:${d.accent}`}>
+    <header class="project-head">
+      <p class="kicker">{bits.join(' · ')}</p>
+      <h1 class="project-title">{d.title}</h1>
+      {d.tags.length > 0 && (
+        <ul class="tags">
+          {d.tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+      )}
+    </header>
+    <div class="study">
+      <figure class="sheet sheet-sketch">
+        <img src={img(d.sketch.src)} alt={d.sketch.alt} width="200" height="300">
+        <figcaption>Pencil sketch</figcaption>
+      </figure>
+      <div class="study-finished">
+        {d.media.map((item, i) => {
+          const captionId = `${project.id}-media-${i}`;
+          return item.type === 'video' ? (
+            <figure class="sheet">
+              <video
+                controls
+                playsinline
+                preload="metadata"
+                poster={item.poster ? img(item.poster) : undefined}
+                aria-labelledby={item.caption ? captionId : undefined}
+                aria-label={item.caption ? undefined : item.alt}
+              >
+                <source src={vid(item.src)} type="video/mp4">
+              </video>
+              <figcaption id={item.caption ? captionId : undefined}>{item.caption || item.alt}</figcaption>
+            </figure>
+          ) : (
+            <figure class="sheet">
+              <img src={img(item.src)} alt={item.alt} width="200" height="300" loading={i ? 'lazy' : 'eager'}>
+              {item.caption && <figcaption>{item.caption}</figcaption>}
+            </figure>
+          );
+        })}
+      </div>
+    </div>
+    <div class="prose">
+      <p class="lede">{d.description}</p>
+      <Content />
+      <p class="pager">
+        <a href={url('/')}>All studies</a>
+        {next && <a href={url(`/projects/${next.id}/`)}>Next: {next.data.title}</a>}
+      </p>
+    </div>
+  </article>
+</Base>

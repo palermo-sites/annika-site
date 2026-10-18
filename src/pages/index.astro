@@ -1,55 +1,25 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import PieceCard from '../components/PieceCard.astro';
-import PostCard from '../components/PostCard.astro';
-import { url, img } from '../lib';
-const featured = (await getCollection('portfolio', (p) => p.data.featured)).sort((a, b) => a.data.order - b.data.order);
-const latest = (await getCollection('designs')).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title),
+);
 ---
-<Base title="Annika Palermo">
-  <div class="wrap">
-    <section class="hero">
-      <div>
-        <p class="eyebrow">Couture bridal · Made to measure</p>
-        <h1>Gowns designed for one bride, and made by hand.</h1>
-        <p class="lead">Annika Palermo creates made-to-measure wedding gowns, from the first sketch to the final fitting, in a small studio where every seam is finished by hand.</p>
-        <div class="actions">
-          <a class="button solid" href={url('/portfolio/')}>View the portfolio</a>
-          <a class="button" href={url('/contact/')}>Book a consultation</a>
-        </div>
-      </div>
-      <figure><img src={img('aurelia.svg')} alt="Illustration of the Aurelia gown, an off-shoulder A-line" width="400" height="560"></figure>
-    </section>
-  </div>
-  <section class="band">
-    <div class="wrap">
-      <div class="section-head">
-        <div><p class="eyebrow">Portfolio</p><h2>Featured gowns</h2></div>
-        <a href={url('/portfolio/')}>All finished pieces</a>
-      </div>
-      <div class="grid three">{featured.map((p) => <PieceCard piece={p} />)}</div>
-    </div>
-  </section>
-  <section>
-    <p class="quote">“A gown should feel like it was always yours: designed around how you move, not how you stand for a photograph.”</p>
-    <p class="muted" style="text-align:center">Annika Palermo, on her approach</p>
-  </section>
-  <section class="band">
-    <div class="narrow">
-      <div class="section-head">
-        <div><p class="eyebrow">From the studio</p><h2>Latest designs</h2></div>
-        <a href={url('/designs/')}>All design notes</a>
-      </div>
-      {latest.map((p) => <PostCard post={p} />)}
-    </div>
-  </section>
-  <section>
-    <div class="narrow" style="text-align:center">
-      <p class="eyebrow">Begin</p>
-      <h2>Your gown starts with a conversation</h2>
-      <p class="muted">Consultations are private, unhurried and held in the studio or by video. Allow six to nine months for a made-to-measure gown.</p>
-      <p><a class="button solid" href={url('/contact/')}>Book a consultation</a></p>
-    </div>
-  </section>
+<Base
+  title="Annika Palermo"
+  description="Placeholder sketchbook of dress studies by Annika Palermo: a pencil drawing beside a finished study for each dress."
+  home
+  placeholder={projects.some((project) => project.data.placeholder)}
+>
+  {projects.length === 0 ? (
+    <p class="empty">No studies yet. Add a Markdown file in the projects folder to place a dress on the grid.</p>
+  ) : (
+    <ul class="studies">
+      {projects.map((project, index) => (
+        <li><ProjectCard project={project} index={index} /></li>
+      ))}
+    </ul>
+  )}
 </Base>

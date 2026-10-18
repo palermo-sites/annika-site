@@ -1,0 +1,123 @@
+---
+import { img, url, vid } from '../lib';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index: number;
+}
+const { project, index } = Astro.props;
+const { title, accent, sketch, finished, preview, placeholder } = project.data;
+const tilts = [-3.5, 2.8, -1.9, 3.2, -2.6, 2.2];
+const tilt = tilts[index % tilts.length];
+---
+<a
+  class="card"
+  href={url(`/projects/${project.id}/`)}
+  style={`--accent:${accent};--tilt:${tilt}deg`}
+  data-project-card
+  aria-labelledby={`${project.id}-title`}
+>
+  <span class="pair">
+    <img class="sketch" src={img(sketch.src)} alt={sketch.alt} width="200" height="300">
+    <span class="finished">
+      <img src={img(finished.src)} alt={finished.alt} width="200" height="300">
+      {preview && (
+        <video class="tile-preview" muted loop playsinline preload="auto" poster={img(finished.src)} aria-hidden="true">
+          <source src={vid(preview)} type="video/mp4">
+        </video>
+      )}
+    </span>
+  </span>
+  <h2 class="card-name" id={`${project.id}-title`}>{title}{placeholder && <span class="visually-hidden">, placeholder</span>}</h2>
+</a>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script>
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const canPlay = () => !motionQuery.matches;
+
+  const stopCard = (card: Element) => {
+    const video = card.querySelector('video.tile-preview');
+    if (!(video instanceof HTMLVideoElement)) return;
+    video.pause();
+    try { video.currentTime = 0; } catch { /* not ready */ }
+    card.removeAttribute('data-playing');
+  };
+
+  const bind = (card: HTMLElement) => {
+    if (card.dataset.bound) return;
+    card.dataset.bound = 'true';
+    const video = card.querySelector('video.tile-preview');
+    if (!(video instanceof HTMLVideoElement)) return;
+    video.muted = true;
+    let token = 0;
+
+    const stop = () => {
+      token += 1;
+      stopCard(card);
+    };
+
+    let sawTouch = 0;
+
+    const start = () => {
+      if (!canPlay()) return;
+      const mine = ++token;
+      card.dataset.playing = 'true';
+      video.play().then(() => {
+        if (mine !== token) return;
+        card.dataset.playing = 'true';
+      }).catch(() => {
+        if (mine !== token) return;
+        card.removeAttribute('data-playing');
+      });
+    };
+
+    card.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'touch') {
+        sawTouch = Date.now();
+        return;
+      }
+      start();
+    });
+    // A touch can also emit a mouseenter. Ignore that echo so the first tap follows the link.
+    card.addEventListener('mouseenter', () => {
+      if (Date.now() - sawTouch < 700) return;
+      start();
+    });
+    const leave = (event: Event) => {
+      const next = 'relatedTarget' in event ? (event as MouseEvent).relatedTarget : null;
+      if (next instanceof Node && card.contains(next)) return;
+      stop();
+    };
+    card.addEventListener('pointerleave', leave);
+    card.addEventListener('mouseleave', leave);
+    card.addEventListener('pointercancel', stop);
+    card.addEventListener('focus', start);
+    card.addEventListener('blur', stop);
+    video.addEventListener('error', () => {
+      video.hidden = true;
+      card.removeAttribute('data-playing');
+    });
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-project-card]').forEach(bind);
+  const stopIfNeeded = () => {
+    if (canPlay()) return;
+    document.querySelectorAll('[data-project-card]').forEach(stopCard);
+  };
+  motionQuery.addEventListener('change', stopIfNeeded);
+</script>
