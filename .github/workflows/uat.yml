@@ -74,9 +74,12 @@ jobs:
         run: |
           # Pages rebuilds the branch in about a minute; done when uat-build.txt names this commit.
           for _ in $(seq 1 50); do
-            if [ "$(curl -fsS "${UAT_URL}uat-build.txt?$RANDOM" 2>/dev/null)" = "$SHA" ]; then
-              curl -fsS -o /dev/null -w "UAT %{http_code} $UAT_URL\n" "$UAT_URL"; exit 0
-            fi
+            # Plain http too: right after the domain is set, Pages serves it before its certificate is issued.
+            for url in "$UAT_URL" "http://$UAT_DOMAIN/"; do
+              if [ "$(curl -fsSL "${url}uat-build.txt?$RANDOM" 2>/dev/null)" = "$SHA" ]; then
+                curl -fsSL -o /dev/null -w "UAT %{http_code} $url\n" "$url"; exit 0
+              fi
+            done
             sleep 6
           done
           echo "UAT did not show $SHA within 5 minutes"; exit 1
