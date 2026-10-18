@@ -1,47 +1,298 @@
 {
-  "currentWeek": {
-    "end": "2026-10-19T00:00:00Z",
-    "metrics": {
-      "deployments": {
-        "preview": {
-          "count": 8,
-          "failed": 0,
-          "failedShare": 0.0
-        },
-        "prod": {
-          "count": 8,
-          "failed": 0,
-          "failedShare": 0.0
-        }
-      },
-      "itemsDelivered": 9,
-      "itemsStarted": 10,
-      "itemsStopped": 0,
-      "mttdDays": 0.002,
-      "netThroughput": 47,
-      "progress": 47,
-      "rework": 0,
-      "wip": 0
-    },
-    "start": "2026-10-12T00:00:00Z",
-    "week": "2026-W42"
-  },
-  "lastWeek": null,
+  "daily": "daily.json",
+  "lastDay": null,
   "name": "Annika Palermo",
   "report": "index.html",
   "repository": "palermo-sites/annika-site",
-  "rolling12": {
-    "from": null,
-    "itemsDelivered": 0,
-    "itemsStarted": 0,
-    "mttdDays": null,
-    "prodDeployments": 0,
-    "prodFailed": 0,
-    "prodFailedShare": null,
-    "to": null,
-    "weeks": 0,
-    "wip": 0
+  "schemaVersion": 2,
+  "system": "annika",
+  "timeZone": "America/New_York",
+  "today": {
+    "counts": {
+      "forwardMoves": 52,
+      "itemsDelivered": 10,
+      "itemsStarted": 11,
+      "itemsStopped": 0,
+      "netThroughput": 52,
+      "rework": 0,
+      "wipEndOfDay": 1
+    },
+    "date": "2026-10-18",
+    "delivery": {
+      "count": 10,
+      "durationSumDays": 0.015857,
+      "durationsDays": [
+        0.000556,
+        0.000764,
+        0.000544,
+        0.001991,
+        0.000718,
+        0.00059,
+        0.005266,
+        0.002083,
+        0.00169,
+        0.001655
+      ]
+    },
+    "deployments": {
+      "preview": {
+        "count": 10,
+        "failed": 0,
+        "runs": [
+          {
+            "at": "2026-10-18T06:10:34Z",
+            "conclusion": "success",
+            "id": 39103106600,
+            "sha": "46ba6b6",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103106600"
+          },
+          {
+            "at": "2026-10-18T06:12:21Z",
+            "conclusion": "success",
+            "id": 39103210766,
+            "sha": "46ba6b6",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103210766"
+          },
+          {
+            "at": "2026-10-18T16:18:39Z",
+            "conclusion": "success",
+            "id": 39144411856,
+            "sha": "0576f9f",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144411856"
+          },
+          {
+            "at": "2026-10-18T16:24:12Z",
+            "conclusion": "success",
+            "id": 39144832446,
+            "sha": "0576f9f",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144832446"
+          },
+          {
+            "at": "2026-10-18T19:02:14Z",
+            "conclusion": "success",
+            "id": 39156894343,
+            "sha": "8916ac4",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39156894343"
+          },
+          {
+            "at": "2026-10-18T19:04:04Z",
+            "conclusion": "success",
+            "id": 39157041241,
+            "sha": "8916ac4",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157041241"
+          },
+          {
+            "at": "2026-10-18T19:21:01Z",
+            "conclusion": "success",
+            "id": 39158360048,
+            "sha": "650c352",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158360048"
+          },
+          {
+            "at": "2026-10-18T19:22:04Z",
+            "conclusion": "success",
+            "id": 39158438861,
+            "sha": "650c352",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158438861"
+          },
+          {
+            "at": "2026-10-18T19:27:45Z",
+            "conclusion": "success",
+            "id": 39158871574,
+            "sha": "fab4ae1",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158871574"
+          },
+          {
+            "at": "2026-10-18T19:29:01Z",
+            "conclusion": "success",
+            "id": 39158964059,
+            "sha": "fab4ae1",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158964059"
+          }
+        ]
+      },
+      "prod": {
+        "count": 9,
+        "failed": 0,
+        "runs": [
+          {
+            "at": "2026-10-18T04:51:37Z",
+            "conclusion": "success",
+            "id": 39098551101,
+            "sha": "30e44ce",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098551101"
+          },
+          {
+            "at": "2026-10-18T04:53:23Z",
+            "conclusion": "success",
+            "id": 39098651580,
+            "sha": "cfe1ea2",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098651580"
+          },
+          {
+            "at": "2026-10-18T04:54:54Z",
+            "conclusion": "success",
+            "id": 39098735659,
+            "sha": "b2a44a1",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098735659"
+          },
+          {
+            "at": "2026-10-18T06:00:56Z",
+            "conclusion": "success",
+            "id": 39102530440,
+            "sha": "c30ad1e",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39102530440"
+          },
+          {
+            "at": "2026-10-18T06:09:29Z",
+            "conclusion": "success",
+            "id": 39103039752,
+            "sha": "97aa9ec",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103039752"
+          },
+          {
+            "at": "2026-10-18T16:24:44Z",
+            "conclusion": "success",
+            "id": 39144872661,
+            "sha": "cd47858",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144872661"
+          },
+          {
+            "at": "2026-10-18T19:04:41Z",
+            "conclusion": "success",
+            "id": 39157089166,
+            "sha": "00bf214",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157089166"
+          },
+          {
+            "at": "2026-10-18T19:22:39Z",
+            "conclusion": "success",
+            "id": 39158485421,
+            "sha": "ea8be52",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158485421"
+          },
+          {
+            "at": "2026-10-18T19:29:27Z",
+            "conclusion": "success",
+            "id": 39158993867,
+            "sha": "8b329d2",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158993867"
+          }
+        ]
+      }
+    },
+    "end": "2026-10-19T00:00:00-04:00",
+    "isoWeek": "2026-W42",
+    "provisional": true,
+    "start": "2026-10-18T00:00:00-04:00"
   },
-  "schemaVersion": 1,
-  "system": "annika"
+  "views": {
+    "rolling12Months": {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfDay": 0
+      },
+      "days": 0,
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0,
+        "mttdDays": null
+      },
+      "deployments": {},
+      "from": null,
+      "label": "Rolling 12 months",
+      "periods": 0,
+      "to": null
+    },
+    "rolling12Weeks": {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfDay": 0
+      },
+      "days": 0,
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0,
+        "mttdDays": null
+      },
+      "deployments": {},
+      "from": null,
+      "label": "Rolling 12 weeks",
+      "periods": 0,
+      "to": null
+    },
+    "rolling30": {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfDay": 0
+      },
+      "days": 0,
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0,
+        "mttdDays": null
+      },
+      "deployments": {},
+      "from": null,
+      "label": "Last 30 days",
+      "to": null
+    },
+    "rolling7": {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfDay": 0
+      },
+      "days": 0,
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0,
+        "mttdDays": null
+      },
+      "deployments": {},
+      "from": null,
+      "label": "Last 7 days",
+      "to": null
+    },
+    "rolling90": {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfDay": 0
+      },
+      "days": 0,
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0,
+        "mttdDays": null
+      },
+      "deployments": {},
+      "from": null,
+      "label": "Last 90 days",
+      "to": null
+    }
+  }
 }

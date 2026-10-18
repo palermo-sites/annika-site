@@ -1,0 +1,35 @@
+{
+  "days": [],
+  "name": "Annika Palermo",
+  "repository": "palermo-sites/annika-site",
+  "schemaVersion": 2,
+  "system": "annika",
+  "timeZone": "America/New_York",
+  "today": {
+    "counts": {
+      "forwardMoves": 52,
+      "itemsDelivered": 10,
+      "itemsStarted": 11,
+      "itemsStopped": 0,
+      "netThroughput": 52,
+      "rework": 0,
+      "wipEndOfDay": 1
+    },
+    "date": "2026-10-18",
+    "delivery": {
+      "count": 10,
+      "durationSumDays": 0.015857
+    },
+    "deployments": {
+      "preview": {
+        "count": 10,
+        "failed": 0
+      },
+      "prod": {
+        "count": 9,
+        "failed": 0
+      }
+    },
+    "isoWeek": "2026-W42"
+  }
+}
