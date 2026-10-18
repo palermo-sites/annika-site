@@ -1,32 +1,43 @@
-# Weekly delivery scorecard as a GitHub Action (no Azure): harvest this system's repositories, score them,
-# and commit the week's numbers (JSON, CSV, markdown, by ISO week) to the data branch `scorecard-data`.
+# Weekly delivery scorecard of this website system (the site is the system level of the platform; website-platform-kit
+# docs/scorecard-pilot.md, decision 0004). GitHub only: no Azure, no Octopus Deploy. GitHub Actions runs are the
+# deployments (deploy.yml on main = prod, staging.yml on pull requests = preview). Numbers and the HTML report go to the
+# data branch scorecard-data, so main (which publishes the site) is never touched; the HTML is also the artifact
+# scorecard-report. Idempotent: a rerun with the same numbers commits nothing.
 name: Weekly scorecard
 
 on:
   schedule:
-    - cron: '17 6 * * 1'   # Mondays 06:17 UTC
+    - cron: '17 6 * * 1'   # Mondays 06:17 UTC, after the ISO week closed
   workflow_dispatch:
     inputs:
-      since_days:
-        description: Days of history to harvest
-        default: '84'
+      weeks:
+        description: 'YYYY-Www or YYYY-Www..YYYY-Www (empty: every missing finished week)'
+        required: false
+        default: ''
+      force:
+        description: 'Rewrite existing weeks (previous numbers kept in history)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: weekly-scorecard
   cancel-in-progress: false
 
 env:
+  # cmis (Scorecard.Cli) with the GitHub Actions deployment source, pinned by commit
   SCORECARD_SOURCE_REPO: clearmeasure-aisf-sample-apps/cmdemo1-scorecard
-  SCORECARD_SOURCE_REF: 95f8c8c0de1df262896e326c81c5b9937a7cdd26
+  SCORECARD_SOURCE_REF: cb90756f2e2a2d08f6c525b212fe220b27a03732
+  CMIS_VERSION: '1.0.0+cb90756'
   DATA_BRANCH: scorecard-data
 
 jobs:
   scorecard:
-    runs-on: ubuntu-latest
-    timeout-minutes: 40
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
       - name: Check out this repository
         uses: actions/checkout@v4
@@ -43,8 +54,11 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
-      - name: Build the scorecard
-        run: dotnet publish scorecard-src/Scorecard.Web -c Release -o "$RUNNER_TEMP/scorecard-web" -p:NuGetAudit=false --nologo -v q
+      - name: Build cmis
+        run: |
+          dotnet publish scorecard-src/Scorecard.Cli -c Release -o "$RUNNER_TEMP/cmis" -p:NuGetAudit=false --nologo -v q
+          dll="$(ls "$RUNNER_TEMP"/cmis/*.dll | grep -iE '/(cmis|Scorecard\.Cli)\.dll$' | head -1)"
+          echo "CMIS=dotnet $dll" >> "$GITHUB_ENV"
       - name: Check out the data branch
         working-directory: system
         run: |
@@ -56,23 +70,37 @@ jobs:
             git -C "$RUNNER_TEMP/data" switch -c "$DATA_BRANCH"
           else
             git worktree add --orphan -b "$DATA_BRANCH" "$RUNNER_TEMP/data"
-            printf '# Weekly delivery scorecard\n\nWritten by `.github/workflows/scorecard.yml` on the default branch. `latest/summary.md` is the newest week; `weekly/<ISO week>/` keeps every run; `history.csv` has one row per run week and scorecard week.\n' > "$RUNNER_TEMP/data/README.md"
           fi
-      - name: Harvest and score
+          # layout of the first scorecard (latest/, weekly/, history.csv) is replaced by weeks/, latest.json, index.html
+          git -C "$RUNNER_TEMP/data" rm -rq --ignore-unmatch latest weekly history.csv
+      - name: Score
         env:
-          SCORECARD_DLL: ${{ runner.temp }}/scorecard-web/Scorecard.Web.dll
-          OUT_DIR: ${{ runner.temp }}/data
-          CONNECTIONS_FILE: system/.github/scorecard/connections.json
-          HARVEST_TOKEN: ${{ secrets.SCORECARD_HARVEST_TOKEN || github.token }}
-          OCTOPUS_KEY: ${{ secrets.SCORECARD_OCTOPUS_KEY }}
-          SINCE_DAYS: ${{ inputs.since_days || '84' }}
-          SYSTEM_NAME: ${{ github.event.repository.name }}
-        run: bash system/.github/scorecard/run-weekly-scorecard.sh
-      - name: Commit the week's numbers
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          CMIS_WORK: ${{ runner.temp }}/cmis-work
+        run: |
+          set -euo pipefail
+          args=(--data "$RUNNER_TEMP/data")
+          [ -n "${{ inputs.weeks }}" ] && args+=(--weeks "${{ inputs.weeks }}")
+          [ "${{ inputs.force }}" = "true" ] && args+=(--force)
+          python3 system/.github/scorecard/scorecard.py "${args[@]}"
+      - name: HTML report
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python3 system/.github/scorecard/report.py --data "$RUNNER_TEMP/data" --out "$RUNNER_TEMP/scorecard-report"
+      - id: artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scorecard-report
+          path: ${{ runner.temp }}/scorecard-report
+          retention-days: 90
+      - name: Job summary
+        run: python3 system/.github/scorecard/report.py --data "$RUNNER_TEMP/data" --summary "$GITHUB_STEP_SUMMARY" --artifact-url "${{ steps.artifact.outputs.artifact-url }}"
+      - name: Commit to the data branch
         working-directory: ${{ runner.temp }}/data
         run: |
+          set -euo pipefail
           git add -A
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
-          git commit -q -m "Scorecard $(date -u +%G-W%V)"
-          git push origin "$DATA_BRANCH"
-          cat latest/summary.md >> "$GITHUB_STEP_SUMMARY"
+          git commit -q -m "Scorecard $(date -u +%G-W%V) ($CMIS_VERSION)"
+          git push -q origin "$DATA_BRANCH"
