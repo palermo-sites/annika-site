@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Book a consultation" description="Request a private bridal consultation with Annika Palermo (sample site; the form does not send).">
+  <div class="narrow">
+    <header class="page-head">
+      <p class="eyebrow">Consultations</p>
+      <h1>Book a consultation</h1>
+      <p class="lead">Tell us a little about your wedding and we will suggest a time. Consultations last about ninety minutes.</p>
+    </header>
+    <p class="notice" role="note"><strong>Sample site:</strong> this form is a placeholder. It is not connected to any service, and nothing you enter is sent or stored.</p>
+    <form class="consult" action="#" method="get" onsubmit="event.preventDefault(); document.getElementById('form-status').textContent = 'Thank you. This is a sample form, so nothing was sent.';">
+      <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+      <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div><label for="date">Wedding date</label><input id="date" name="date" type="date"></div>
+      <div>
+        <label for="type">Consultation</label>
+        <select id="type" name="type"><option>In the studio</option><option>By video</option></select>
+      </div>
+      <div class="full"><label for="message">Tell us about your gown</label><textarea id="message" name="message" rows="5"></textarea></div>
+      <div class="full"><button class="button solid" type="submit">Request a consultation</button></div>
+      <p id="form-status" class="full muted" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</Base>

@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { url, img, fmtDate } from '../../lib';
+export async function getStaticPaths() {
+  return (await getCollection('designs')).map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+---
+<Base title={d.title} description={d.description} type="article">
+  <article class="narrow">
+    <header class="page-head">
+      <p class="eyebrow"><time datetime={d.date.toISOString()}>{fmtDate(d.date)}</time></p>
+      <h1>{d.title}</h1>
+      <p class="lead">{d.description}</p>
+      <ul class="tags">{d.tags.map((t) => <li>{t}</li>)}</ul>
+    </header>
+    <img class="feature-img" src={img(d.image)} alt={d.imageAlt} width="400" height="560">
+    <div class="prose"><Content /></div>
+    <p class="muted" style="margin-top:3rem"><a href={url('/designs/')}>All design notes</a></p>
+  </article>
+</Base>

@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+const posts = (await getCollection('designs')).sort((a, b) => +b.data.date - +a.data.date);
+---
+<Base title="Designs" description="Design notes from the studio: sketches, fabric, construction and inspiration behind Annika Palermo's gowns.">
+  <div class="narrow">
+    <header class="page-head">
+      <p class="eyebrow">Design notes</p>
+      <h1>From the sketchbook</h1>
+      <p class="lead">Sketches, fabric, construction and the ideas behind each collection.</p>
+    </header>
+    {posts.map((p) => <PostCard post={p} />)}
+  </div>
+</Base>

@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { url, img } from '../../lib';
+export async function getStaticPaths() {
+  const pieces = (await getCollection('portfolio')).sort((a, b) => a.data.order - b.data.order);
+  return pieces.map((piece, i) => ({ params: { id: piece.id }, props: { piece, next: pieces[(i + 1) % pieces.length] } }));
+}
+const { piece, next } = Astro.props;
+const { Content } = await render(piece);
+const d = piece.data;
+---
+<Base title={d.title} description={d.description} type="article">
+  <div class="wrap">
+    <p class="muted" style="padding-top:1.5rem"><a href={url('/portfolio/')}>Portfolio</a> / {d.title}</p>
+    <article class="piece">
+      <div class="gallery">
+        {d.gallery.map((g, i) => (
+          <figure><img src={img(g.src)} alt={g.alt} width="400" height="560" loading={i ? 'lazy' : 'eager'}><figcaption>{g.alt}</figcaption></figure>
+        ))}
+      </div>
+      <div style="position:sticky;top:2rem">
+        <p class="eyebrow">{d.silhouette} · {d.year}</p>
+        <h1>{d.title}</h1>
+        <p style="font-size:1.15rem" class="muted">{d.description}</p>
+        <div class="prose"><Content /></div>
+        <dl class="specs">
+          <dt>Silhouette</dt><dd>{d.silhouette}</dd>
+          <dt>Fabrics</dt><dd>{d.fabrics.join(', ')}</dd>
+          <dt>Details</dt><dd><ul style="margin:0;padding-left:1.1rem">{d.details.map((x) => <li>{x}</li>)}</ul></dd>
+        </dl>
+        <p><a class="button solid" href={url('/contact/')}>Ask about a gown like {d.title}</a></p>
+        <p class="muted">Next: <a href={url(`/portfolio/${next.id}/`)}>{next.data.title}</a></p>
+      </div>
+    </article>
+  </div>
+</Base>
