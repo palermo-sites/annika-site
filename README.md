@@ -51,16 +51,22 @@ resolve. When ready:
 
 ## Delivery scorecard
 
-`.github/workflows/scorecard.yml` scores this site every Monday 06:17 UTC (or by hand: Actions → Weekly scorecard → Run workflow).
-The site is the system level of the platform, so its scorecard lives here. GitHub only, no Azure or Octopus Deploy:
-items are issues and pull requests; deployments are GitHub Actions runs (`deploy.yml` on `main` = prod, `staging.yml` on pull requests = preview),
-configured in `.github/scorecard/config.json`.
+`.github/workflows/scorecard.yml` records this site's delivery facts every day at 06:17 UTC (or by hand: Actions → Daily
+scorecard → Run workflow, with an optional backfill range `days` and `force`). The site is the system level of the platform,
+so its scorecard lives here (kit decisions 0005, 0006). GitHub only, no Azure or Octopus Deploy: items and stage moves come from
+cmis over this repository's issues, pull requests and commits; deployments are GitHub Actions runs (`deploy.yml` on `main` = prod,
+`staging.yml` on pull requests = preview), configured in `.github/scorecard/config.json`.
 
-Output goes to the `scorecard-data` branch, never to `main`:
+A day is a calendar day in America/New_York. Output goes to the `scorecard-data` branch, never to `main`:
 
-- `weeks/<YYYY>-W<ww>.json`: one file per finished ISO week, written once
-- `latest.json`: last finished week, the current week so far, and Rolling 12 (read by the platform dashboard)
-- `index.html` and `README.md`: the report (recent weeks, newest first, plus Rolling 12)
+- `days/YYYY-MM-DD.json`: one per finished day, written once: additive counts (started, delivered, forward moves, rework,
+  stopped, end-of-day work in process), delivery durations (list and sum), item and move events with timestamps, deployments per
+  environment with each run's outcome
+- `daily.json`: compact counts of every day plus today so far (the dashboard groups it in the browser)
+- `latest.json`: today so far (provisional), the last finished day, and the named views (rolling 7/30/90 days, Rolling 12 weeks/months)
+- `index.html`: the report: rolling views, then by ISO week, month, quarter and day
 
-Each run shows the full report (all rows, so far + recent weeks + Rolling 12) on its Summary page in the Actions UI, and uploads the styled HTML as the artifact `scorecard-report`. A rerun with unchanged numbers commits nothing.
+Grouping rules: counts are summed; MTTD = total delivery time / items delivered (never an average of averages); work in process is
+the last day's value; failed share = failed / deployments. Each run shows the report on its Summary page and uploads the styled
+HTML as the artifact `scorecard-report`. A rerun with unchanged numbers commits nothing.
 Secret: `SCORECARD_SOURCE_TOKEN` (read access to the scorecard source, to build cmis).

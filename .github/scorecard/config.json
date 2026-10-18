@@ -1,7 +1,7 @@
 {
   "slug": "annika",
   "name": "Annika Palermo",
-  "since": "2026-10-12",
+  "since": "2026-10-18",
   "actionsWorkflows": "staging.yml!pull_request:preview,deploy.yml@main:prod",
   "environments": "preview:Preview,prod:Delivered"
 }
