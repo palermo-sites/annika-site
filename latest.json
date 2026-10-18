@@ -4,22 +4,22 @@
     "metrics": {
       "deployments": {
         "preview": {
-          "count": 6,
+          "count": 8,
           "failed": 0,
           "failedShare": 0.0
         },
         "prod": {
-          "count": 7,
+          "count": 8,
           "failed": 0,
           "failedShare": 0.0
         }
       },
-      "itemsDelivered": 8,
-      "itemsStarted": 9,
+      "itemsDelivered": 9,
+      "itemsStarted": 10,
       "itemsStopped": 0,
       "mttdDays": 0.002,
-      "netThroughput": 42,
-      "progress": 42,
+      "netThroughput": 47,
+      "progress": 47,
       "rework": 0,
       "wip": 0
     },
