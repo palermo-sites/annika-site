@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Builds the site into _site/. Replace the body with your generator's build; keep the output folder.
+# Builds the Astro site into _site/ (astro.config.mjs outDir). BASE_PATH sets the base path when served under one.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-rm -rf _site
-cp -r site _site
+npm ci --no-audit --no-fund
+npx astro build
 echo "built _site/"
