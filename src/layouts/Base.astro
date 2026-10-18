@@ -1,19 +1,37 @@
 ---
-import '@fontsource/cormorant-garamond/400.css';
-import '@fontsource/cormorant-garamond/500.css';
-import '@fontsource/cormorant-garamond/400-italic.css';
-import '@fontsource-variable/inter';
+import '@fontsource/caveat/500.css';
+import '@fontsource/caveat/600.css';
+import '@fontsource/source-serif-4/400.css';
+import '@fontsource/source-serif-4/400-italic.css';
+import '@fontsource/source-serif-4/600.css';
 import '../styles/global.css';
 import { base, url } from '../lib';
 
-interface Props { title: string; description?: string; image?: string; type?: string }
-const { title, description = 'Annika Palermo designs couture wedding gowns by hand: sketches, fittings and finished pieces. Sample site.', image = '/images/og.png', type = 'website' } = Astro.props;
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  accent?: string;
+  home?: boolean;
+  placeholder?: boolean;
+}
+const {
+  title,
+  description = 'Placeholder sketchbook of dress studies by Annika Palermo. Sample site.',
+  image = '/images/og.png',
+  type = 'website',
+  accent,
+  home = false,
+  placeholder = false,
+} = Astro.props;
 const path = Astro.url.pathname.slice(base.length) || '/';
 const canonical = new URL(path, Astro.site);
-const ogImage = new URL(image, Astro.site);
+const imagePath = image.startsWith('/') ? url(image) : image;
+const ogImage = new URL(imagePath, Astro.site);
 const staging = import.meta.env.PUBLIC_STAGING === 'true';
-const fullTitle = title === 'Annika Palermo' ? 'Annika Palermo · Bridal Couture' : `${title} · Annika Palermo`;
-const nav = [['/designs/', 'Designs'], ['/portfolio/', 'Portfolio'], ['/about/', 'About'], ['/contact/', 'Book a consultation']];
+const fullTitle = home || title === 'Annika Palermo' ? 'Annika Palermo · Dress studies' : `${title} · Annika Palermo`;
+const notes = [staging ? 'UAT, not live' : null, placeholder ? 'Placeholder' : null].filter(Boolean);
 ---
 <!doctype html>
 <html lang="en">
@@ -26,7 +44,7 @@ const nav = [['/designs/', 'Designs'], ['/portfolio/', 'Portfolio'], ['/about/',
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml">
     <link rel="sitemap" href={url('/sitemap-index.xml')}>
     {staging && <meta name="robots" content="noindex, nofollow">}
-    <meta name="theme-color" content="#f8f3ec">
+    <meta name="theme-color" content="#f4efe6">
     <meta property="og:type" content={type}>
     <meta property="og:site_name" content="Annika Palermo">
     <meta property="og:title" content={fullTitle}>
@@ -35,26 +53,27 @@ const nav = [['/designs/', 'Designs'], ['/portfolio/', 'Portfolio'], ['/about/',
     <meta property="og:image" content={ogImage}>
     <meta name="twitter:card" content="summary_large_image">
   </head>
-  <body>
+  <body class:list={[{ 'has-accent': Boolean(accent) }]} style={accent ? `--accent:${accent}` : undefined}>
     <a class="skip" href="#main">Skip to content</a>
-    <div class="sample-banner" role="note">{staging && <strong>UAT, not live. </strong>}Sample website: the designer, gowns and posts are fictional.</div>
-    <header class="site-header">
-      <a class="wordmark" href={url('/')}>Annika Palermo<span>Bridal Couture</span></a>
-      <nav aria-label="Main">
-        <ul>
-          {nav.map(([href, label]) => (
-            <li><a href={url(href)} aria-current={path.startsWith(href) ? 'page' : undefined} class={href === '/contact/' ? 'nav-cta' : undefined}>{label}</a></li>
-          ))}
-        </ul>
-      </nav>
+    {staging && <div class="uat-banner" role="note"><strong>UAT, not live.</strong> This preview is not the published site.</div>}
+    <header class="mast wrap">
+      <div class="mast-id">
+        {home ? (
+          <h1 class="wordmark"><a href={url('/')}>Annika Palermo</a></h1>
+        ) : (
+          <a class="wordmark" href={url('/')}>Annika Palermo</a>
+        )}
+        <p class="tagline">from first pencil line to finished frock — a sketchbook in progress</p>
+      </div>
+      {notes.length > 0 && <p class="chip">{notes.join(' · ')}</p>}
     </header>
-    <main id="main">
+    <main id="main" class="wrap" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer">
-      <p class="wordmark small">Annika Palermo</p>
-      <p>Couture wedding gowns, designed and made by hand. Consultations by appointment.</p>
-      <p class="muted">&copy; {new Date().getFullYear()} Annika Palermo · Sample site. Illustrations are original artwork made for this site.</p>
+      <p class="footer-name">Annika Palermo</p>
+      <p>Dress studies from a sketchbook in progress. The pieces here are placeholders until real work replaces them.</p>
+      <p class="fine">&copy; {new Date().getFullYear()} Annika Palermo · Sample site. Drawings are original artwork made for this site.</p>
     </footer>
   </body>
 </html>

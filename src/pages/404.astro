@@ -2,10 +2,10 @@
 import Base from '../layouts/Base.astro';
 import { url } from '../lib';
 ---
-<Base title="Page not found">
-  <div class="narrow page-head">
-    <p class="eyebrow">404</p>
-    <h1>This page could not be found</h1>
-    <p><a class="button solid" href={url('/')}>Return home</a></p>
+<Base title="Page not found" description="This page is not in the Annika Palermo sketchbook.">
+  <div class="not-found">
+    <p class="kicker">404</p>
+    <h1>This page is not in the sketchbook</h1>
+    <p><a href={url('/')}>Back to the studies</a></p>
   </div>
 </Base>
