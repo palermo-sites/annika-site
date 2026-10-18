@@ -9,18 +9,18 @@
   "timeZone": "America/New_York",
   "today": {
     "counts": {
-      "forwardMoves": 52,
-      "itemsDelivered": 10,
-      "itemsStarted": 11,
+      "forwardMoves": 57,
+      "itemsDelivered": 11,
+      "itemsStarted": 12,
       "itemsStopped": 0,
-      "netThroughput": 52,
+      "netThroughput": 57,
       "rework": 0,
       "wipEndOfDay": 1
     },
     "date": "2026-10-18",
     "delivery": {
-      "count": 10,
-      "durationSumDays": 0.015857,
+      "count": 11,
+      "durationSumDays": 0.017547,
       "durationsDays": [
         0.000556,
         0.000764,
@@ -31,12 +31,89 @@
         0.005266,
         0.002083,
         0.00169,
-        0.001655
+        0.001655,
+        0.00169
       ]
     },
     "deployments": {
-      "preview": {
+      "prod": {
         "count": 10,
+        "failed": 0,
+        "runs": [
+          {
+            "at": "2026-10-18T04:51:37Z",
+            "conclusion": "success",
+            "id": 39098551101,
+            "sha": "30e44ce",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098551101"
+          },
+          {
+            "at": "2026-10-18T04:53:23Z",
+            "conclusion": "success",
+            "id": 39098651580,
+            "sha": "cfe1ea2",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098651580"
+          },
+          {
+            "at": "2026-10-18T04:54:54Z",
+            "conclusion": "success",
+            "id": 39098735659,
+            "sha": "b2a44a1",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098735659"
+          },
+          {
+            "at": "2026-10-18T06:00:56Z",
+            "conclusion": "success",
+            "id": 39102530440,
+            "sha": "c30ad1e",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39102530440"
+          },
+          {
+            "at": "2026-10-18T06:09:29Z",
+            "conclusion": "success",
+            "id": 39103039752,
+            "sha": "97aa9ec",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103039752"
+          },
+          {
+            "at": "2026-10-18T16:24:44Z",
+            "conclusion": "success",
+            "id": 39144872661,
+            "sha": "cd47858",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144872661"
+          },
+          {
+            "at": "2026-10-18T19:04:41Z",
+            "conclusion": "success",
+            "id": 39157089166,
+            "sha": "00bf214",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157089166"
+          },
+          {
+            "at": "2026-10-18T19:22:39Z",
+            "conclusion": "success",
+            "id": 39158485421,
+            "sha": "ea8be52",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158485421"
+          },
+          {
+            "at": "2026-10-18T19:29:27Z",
+            "conclusion": "success",
+            "id": 39158993867,
+            "sha": "8b329d2",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158993867"
+          },
+          {
+            "at": "2026-10-18T19:48:14Z",
+            "conclusion": "success",
+            "id": 39160423009,
+            "sha": "7d9ca7a",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160423009"
+          }
+        ]
+      },
+      "uat": {
+        "count": 12,
         "failed": 0,
         "runs": [
           {
@@ -108,75 +185,20 @@
             "id": 39158964059,
             "sha": "fab4ae1",
             "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158964059"
-          }
-        ]
-      },
-      "prod": {
-        "count": 9,
-        "failed": 0,
-        "runs": [
-          {
-            "at": "2026-10-18T04:51:37Z",
-            "conclusion": "success",
-            "id": 39098551101,
-            "sha": "30e44ce",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098551101"
           },
           {
-            "at": "2026-10-18T04:53:23Z",
+            "at": "2026-10-18T19:46:18Z",
             "conclusion": "success",
-            "id": 39098651580,
-            "sha": "cfe1ea2",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098651580"
+            "id": 39160277233,
+            "sha": "1a21408",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160277233"
           },
           {
-            "at": "2026-10-18T04:54:54Z",
+            "at": "2026-10-18T19:47:47Z",
             "conclusion": "success",
-            "id": 39098735659,
-            "sha": "b2a44a1",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098735659"
-          },
-          {
-            "at": "2026-10-18T06:00:56Z",
-            "conclusion": "success",
-            "id": 39102530440,
-            "sha": "c30ad1e",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39102530440"
-          },
-          {
-            "at": "2026-10-18T06:09:29Z",
-            "conclusion": "success",
-            "id": 39103039752,
-            "sha": "97aa9ec",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103039752"
-          },
-          {
-            "at": "2026-10-18T16:24:44Z",
-            "conclusion": "success",
-            "id": 39144872661,
-            "sha": "cd47858",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144872661"
-          },
-          {
-            "at": "2026-10-18T19:04:41Z",
-            "conclusion": "success",
-            "id": 39157089166,
-            "sha": "00bf214",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157089166"
-          },
-          {
-            "at": "2026-10-18T19:22:39Z",
-            "conclusion": "success",
-            "id": 39158485421,
-            "sha": "ea8be52",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158485421"
-          },
-          {
-            "at": "2026-10-18T19:29:27Z",
-            "conclusion": "success",
-            "id": 39158993867,
-            "sha": "8b329d2",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158993867"
+            "id": 39160388190,
+            "sha": "1a21408",
+            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160388190"
           }
         ]
       }
