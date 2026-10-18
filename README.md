@@ -48,3 +48,19 @@ resolve. When ready:
 2. (Recommended) verify the domain for the `palermo-sites` org: GitHub org Settings, Pages, Add a domain (TXT record).
 3. Add `public/CNAME` containing `annikapalermo.com`, and in `deploy.yml` stop passing `BASE_PATH` (base becomes `/`).
 4. Repository Settings, Pages: custom domain `annikapalermo.com`, then tick "Enforce HTTPS" once the certificate is issued.
+
+## Delivery scorecard
+
+`.github/workflows/scorecard.yml` scores this site every Monday 06:17 UTC (or by hand: Actions → Weekly scorecard → Run workflow).
+The site is the system level of the platform, so its scorecard lives here. GitHub only, no Azure or Octopus Deploy:
+items are issues and pull requests; deployments are GitHub Actions runs (`deploy.yml` on `main` = prod, `staging.yml` on pull requests = preview),
+configured in `.github/scorecard/config.json`.
+
+Output goes to the `scorecard-data` branch, never to `main`:
+
+- `weeks/<YYYY>-W<ww>.json`: one file per finished ISO week, written once
+- `latest.json`: last finished week, the current week so far, and Rolling 12 (read by the platform dashboard)
+- `index.html` and `README.md`: the report (recent weeks, newest first, plus Rolling 12)
+
+Each run also uploads the HTML as the artifact `scorecard-report` and writes a job summary. A rerun with unchanged numbers commits nothing.
+Secret: `SCORECARD_SOURCE_TOKEN` (read access to the scorecard source, to build cmis).
