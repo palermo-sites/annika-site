@@ -1,4 +1,4 @@
-# Deploys the site to GitHub Pages (environment prod) after ci passes on main.
+# Deploys the site to GitHub Pages (environment prod, https://annikapalermo.com) after ci passes on main.
 name: deploy
 
 on:
@@ -32,11 +32,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - id: configure
-        uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v5
+      # Served at https://annikapalermo.com (Pages custom domain, public/CNAME): base '/'.
       - name: Build
-        env:
-          BASE_PATH: ${{ steps.configure.outputs.base_path }}
         run: bash scripts/build.sh
       - uses: actions/upload-pages-artifact@v3
         with:

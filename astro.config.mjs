@@ -2,8 +2,8 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// site is the final address. BASE_PATH is set by the deploy workflow while the site is served at
-// https://palermo-sites.github.io/annika-site/; once annikapalermo.com points at Pages it is empty and the base is '/'.
+// site is the final address: https://annikapalermo.com (UAT: https://uat.annikapalermo.com). Both are served at '/';
+// BASE_PATH remains for a build served under a path.
 export default defineConfig({
   site: 'https://annikapalermo.com',
   base: process.env.BASE_PATH || '/',
