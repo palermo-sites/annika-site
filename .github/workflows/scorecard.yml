@@ -1,21 +1,21 @@
-# Weekly delivery scorecard of this website system (the site is the system level of the platform; website-platform-kit
-# docs/scorecard-pilot.md, decision 0004). GitHub only: no Azure, no Octopus Deploy. GitHub Actions runs are the
+# Daily delivery scorecard of this website system (the site is the system level of the platform; website-platform-kit
+# docs/scorecard-pilot.md, decisions 0005 and 0006). One fact file per America/New_York calendar day. GitHub only: no Azure, no Octopus Deploy. GitHub Actions runs are the
 # deployments (deploy.yml on main = prod, staging.yml on pull requests = preview). Numbers and the HTML report go to the
 # data branch scorecard-data, so main (which publishes the site) is never touched; the HTML is also the artifact
 # scorecard-report. Idempotent: a rerun with the same numbers commits nothing.
-name: Weekly scorecard
+name: Daily scorecard
 
 on:
   schedule:
-    - cron: '17 6 * * 1'   # Mondays 06:17 UTC, after the ISO week closed
+    - cron: '17 6 * * *'   # every day 06:17 UTC (02:17 EDT / 01:17 EST), after the New York day closed
   workflow_dispatch:
     inputs:
-      weeks:
-        description: 'YYYY-Www or YYYY-Www..YYYY-Www (empty: every missing finished week)'
+      days:
+        description: 'Backfill YYYY-MM-DD or YYYY-MM-DD..YYYY-MM-DD (empty: every missing finished day)'
         required: false
         default: ''
       force:
-        description: 'Rewrite existing weeks (previous numbers kept in history)'
+        description: 'Rewrite existing days in the range (previous counts kept in history)'
         type: boolean
         default: false
 
@@ -24,7 +24,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: weekly-scorecard
+  group: daily-scorecard
   cancel-in-progress: false
 
 env:
@@ -71,8 +71,8 @@ jobs:
           else
             git worktree add --orphan -b "$DATA_BRANCH" "$RUNNER_TEMP/data"
           fi
-          # layout of the first scorecard (latest/, weekly/, history.csv) is replaced by weeks/, latest.json, index.html
-          git -C "$RUNNER_TEMP/data" rm -rq --ignore-unmatch latest weekly history.csv
+          # earlier layouts (latest/, weekly/, history.csv; weeks/, README.md) are replaced by days/, daily.json, latest.json, index.html
+          git -C "$RUNNER_TEMP/data" rm -rq --ignore-unmatch latest weekly history.csv weeks README.md
       - name: Score
         env:
           GH_TOKEN: ${{ github.token }}
@@ -81,7 +81,7 @@ jobs:
         run: |
           set -euo pipefail
           args=(--data "$RUNNER_TEMP/data")
-          [ -n "${{ inputs.weeks }}" ] && args+=(--weeks "${{ inputs.weeks }}")
+          [ -n "${{ inputs.days }}" ] && args+=(--days "${{ inputs.days }}")
           [ "${{ inputs.force }}" = "true" ] && args+=(--force)
           python3 system/.github/scorecard/scorecard.py "${args[@]}"
       - name: HTML report
@@ -102,5 +102,5 @@ jobs:
           set -euo pipefail
           git add -A
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
-          git commit -q -m "Scorecard $(date -u +%G-W%V) ($CMIS_VERSION)"
+          git commit -q -m "Scorecard $(TZ=America/New_York date +%F) ($CMIS_VERSION)"
           git push -q origin "$DATA_BRANCH"
