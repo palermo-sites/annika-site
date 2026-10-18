@@ -2,6 +2,6 @@
   "slug": "annika",
   "name": "Annika Palermo",
   "since": "2026-10-18",
-  "actionsWorkflows": "staging.yml!pull_request:uat,deploy.yml@main:prod",
+  "actionsWorkflows": "staging.yml!pull_request:uat,uat.yml:uat,deploy.yml@main:prod",
   "environments": "uat:UAT,prod:Delivered"
 }

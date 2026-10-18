@@ -1,0 +1,92 @@
+# UAT on GitHub Pages (kit decision 0007): one UAT site, https://palermo-sites.github.io/annika-site-uat/, served by the
+# companion repository palermo-sites/annika-site-uat (branch gh-pages). Every push to a pull request and every push to
+# main builds the site for that address (base /annika-site-uat, noindex meta, UAT banner, no sitemap) and replaces the
+# UAT site; the newest deploy wins (one UAT at a time, no per-PR previews). Prod stays on this repository's own Pages
+# (deploy.yml). The only credential is UAT_DEPLOY_KEY, a deploy key with write access to annika-site-uat only.
+name: uat
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: uat
+  cancel-in-progress: true
+
+env:
+  UAT_REPOSITORY: palermo-sites/annika-site-uat
+  UAT_URL: https://palermo-sites.github.io/annika-site-uat/
+
+jobs:
+  deploy:
+    # pull requests from forks get no secrets; they are not deployed
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    environment:
+      name: uat
+      url: ${{ env.UAT_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Build (UAT)
+        env:
+          BASE_PATH: /annika-site-uat
+          PUBLIC_STAGING: "true"
+        run: |
+          set -euo pipefail
+          bash scripts/build.sh
+          rm -f _site/sitemap-index.xml _site/sitemap-0.xml
+          touch _site/.nojekyll
+          echo "${{ github.event.pull_request.head.sha || github.sha }}" > _site/uat-build.txt
+      - name: Publish to the UAT repository
+        env:
+          DEPLOY_KEY: ${{ secrets.UAT_DEPLOY_KEY }}
+          SOURCE: ${{ github.event.pull_request.html_url || format('{0}/{1}/commit/{2}', github.server_url, github.repository, github.sha) }}
+          SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/uat_key && chmod 600 ~/.ssh/uat_key
+          ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
+          cd _site
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -q -m "UAT ${SHA:0:7} from $SOURCE"
+          GIT_SSH_COMMAND='ssh -i ~/.ssh/uat_key -o IdentitiesOnly=yes' git push -q -f "git@github.com:$UAT_REPOSITORY.git" gh-pages
+          rm -f ~/.ssh/uat_key
+      - name: Wait for the UAT site
+        env:
+          SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          # Pages rebuilds the branch in about a minute; done when uat-build.txt names this commit.
+          for _ in $(seq 1 50); do
+            if [ "$(curl -fsS "${UAT_URL}uat-build.txt?$RANDOM" 2>/dev/null)" = "$SHA" ]; then
+              curl -fsS -o /dev/null -w "UAT %{http_code} $UAT_URL\n" "$UAT_URL"; exit 0
+            fi
+            sleep 6
+          done
+          echo "UAT did not show $SHA within 5 minutes"; exit 1
+      - name: Comment the UAT URL on the pull request
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          body="<!-- uat -->UAT: $UAT_URL (commit ${SHA:0:7}). One UAT site: the newest pull request push or main deploy replaces it."
+          id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --jq '[.[] | select(.body | startswith("<!-- uat -->"))][0].id // empty')"
+          if [ -n "$id" ]; then gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -f body="$body" --silent
+          else gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" -f body="$body" --silent; fi

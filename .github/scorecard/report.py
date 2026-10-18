@@ -86,7 +86,7 @@ def sections(daily):
 NOTE = ('Days are calendar days in America/New_York; weeks are ISO weeks of those days. "So far" is provisional until the day closes; '
         'rolling views end with yesterday. Counts are sums; work in process is the last day\'s end-of-day value; mean time to '
         'delivery is total delivery time / items delivered; failed share is failed / deployments. Deployments are GitHub Actions '
-        'runs (deploy.yml on main = prod, staging.yml on pull requests = UAT); no Azure or Octopus Deploy.')
+        'runs (deploy.yml on main = prod, uat.yml = UAT; staging.yml pull request runs before 2026-10-18 also count as UAT); no Azure or Octopus Deploy.')
 
 
 def page(daily, stamp, run_url):

@@ -4,7 +4,7 @@ carries its scorecard; daily granularity; America/New_York calendar days).
 
 Harvest this repository with cmis (GitHub only), read every timestamped event behind the scorecard's cells
 (`cmis connections score-drill`: items started, items delivered, forward moves, rework) plus this repository's
-GitHub Actions runs (deployments: deploy.yml on main = prod, staging.yml on pull requests = UAT), and bucket them
+GitHub Actions runs (deployments: deploy.yml on main = prod, uat.yml = UAT; staging.yml pull request runs before 2026-10-18 also count as UAT), and bucket them
 by calendar day in America/New_York. Writes into --data (a worktree of the scorecard-data branch):
 
   days/YYYY-MM-DD.json  one per finished day: additive raw counts, delivery-duration list and sum, item and move
@@ -29,7 +29,7 @@ SCHEMA_VERSION = 2
 TZ_NAME = 'America/New_York'
 TZ = ZoneInfo(TZ_NAME)
 UTC = dt.timezone.utc
-DEFAULT_WORKFLOWS = 'staging.yml!pull_request:uat,deploy.yml@main:prod'
+DEFAULT_WORKFLOWS = 'uat.yml:uat,deploy.yml@main:prod'
 DEFAULT_ENVIRONMENTS = 'uat:UAT,prod:Delivered'
 METRICS = {'itemsstarted': 'started', 'itemsdelivered': 'delivered', 'progress': 'forward', 'rework': 'rework'}
 STOP_STATUSES = {'Backlog', 'Created', 'New', 'To Do'}
