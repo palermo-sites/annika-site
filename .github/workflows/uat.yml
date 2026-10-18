@@ -1,6 +1,6 @@
-# UAT on GitHub Pages (kit decision 0007): one UAT site, https://palermo-sites.github.io/annika-site-uat/, served by the
+# UAT on GitHub Pages (kit decision 0007): one UAT site, https://uat.annikapalermo.com/, served by the
 # companion repository palermo-sites/annika-site-uat (branch gh-pages). Every push to a pull request and every push to
-# main builds the site for that address (base /annika-site-uat, noindex meta, UAT banner, no sitemap) and replaces the
+# main builds the site for that address (base /, CNAME uat.annikapalermo.com, noindex meta, UAT banner, no sitemap) and replaces the
 # UAT site; the newest deploy wins (one UAT at a time, no per-PR previews). Prod stays on this repository's own Pages
 # (deploy.yml). The only credential is UAT_DEPLOY_KEY, a deploy key with write access to annika-site-uat only.
 name: uat
@@ -23,7 +23,8 @@ concurrency:
 
 env:
   UAT_REPOSITORY: palermo-sites/annika-site-uat
-  UAT_URL: https://palermo-sites.github.io/annika-site-uat/
+  UAT_URL: https://uat.annikapalermo.com/
+  UAT_DOMAIN: uat.annikapalermo.com
 
 jobs:
   deploy:
@@ -41,13 +42,14 @@ jobs:
           cache: npm
       - name: Build (UAT)
         env:
-          BASE_PATH: /annika-site-uat
+          BASE_PATH: /
           PUBLIC_STAGING: "true"
         run: |
           set -euo pipefail
           bash scripts/build.sh
           rm -f _site/sitemap-index.xml _site/sitemap-0.xml
           touch _site/.nojekyll
+          echo "$UAT_DOMAIN" > _site/CNAME
           echo "${{ github.event.pull_request.head.sha || github.sha }}" > _site/uat-build.txt
       - name: Publish to the UAT repository
         env:
@@ -72,9 +74,12 @@ jobs:
         run: |
           # Pages rebuilds the branch in about a minute; done when uat-build.txt names this commit.
           for _ in $(seq 1 50); do
-            if [ "$(curl -fsS "${UAT_URL}uat-build.txt?$RANDOM" 2>/dev/null)" = "$SHA" ]; then
-              curl -fsS -o /dev/null -w "UAT %{http_code} $UAT_URL\n" "$UAT_URL"; exit 0
-            fi
+            # Plain http too: right after the domain is set, Pages serves it before its certificate is issued.
+            for url in "$UAT_URL" "http://$UAT_DOMAIN/"; do
+              if [ "$(curl -fsSL "${url}uat-build.txt?$RANDOM" 2>/dev/null)" = "$SHA" ]; then
+                curl -fsSL -o /dev/null -w "UAT %{http_code} $url\n" "$url"; exit 0
+              fi
+            done
             sleep 6
           done
           echo "UAT did not show $SHA within 5 minutes"; exit 1
