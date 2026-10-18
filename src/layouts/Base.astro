@@ -11,6 +11,7 @@ const { title, description = 'Annika Palermo designs couture wedding gowns by ha
 const path = Astro.url.pathname.slice(base.length) || '/';
 const canonical = new URL(path, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const staging = import.meta.env.PUBLIC_STAGING === 'true';
 const fullTitle = title === 'Annika Palermo' ? 'Annika Palermo · Bridal Couture' : `${title} · Annika Palermo`;
 const nav = [['/designs/', 'Designs'], ['/portfolio/', 'Portfolio'], ['/about/', 'About'], ['/contact/', 'Book a consultation']];
 ---
@@ -24,6 +25,7 @@ const nav = [['/designs/', 'Designs'], ['/portfolio/', 'Portfolio'], ['/about/',
     <link rel="canonical" href={canonical}>
     <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml">
     <link rel="sitemap" href={url('/sitemap-index.xml')}>
+    {staging && <meta name="robots" content="noindex, nofollow">}
     <meta name="theme-color" content="#f8f3ec">
     <meta property="og:type" content={type}>
     <meta property="og:site_name" content="Annika Palermo">
@@ -35,7 +37,7 @@ const nav = [['/designs/', 'Designs'], ['/portfolio/', 'Portfolio'], ['/about/',
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <div class="sample-banner" role="note">Sample website: the designer, gowns and posts are fictional.</div>
+    <div class="sample-banner" role="note">{staging && <strong>STAGING preview, not live. </strong>}Sample website: the designer, gowns and posts are fictional.</div>
     <header class="site-header">
       <a class="wordmark" href={url('/')}>Annika Palermo<span>Bridal Couture</span></a>
       <nav aria-label="Main">

@@ -5,7 +5,17 @@
 Website system `annika` on the palermo-sites website platform, built with [Astro](https://astro.build) (static output).
 Owner: Jeffrey Palermo. Final domain: annikapalermo.com (not yet connected; see below).
 
-- Live now: https://palermo-sites.github.io/annika-site/
+- Live (prod, GitHub Pages): https://palermo-sites.github.io/annika-site/
+- Staging (stable, not indexed): https://thankful-island-0db965a0f.3.azurestaticapps.net (branch `staging`)
+- Pull request previews: each pull request gets its own URL, posted as a comment on it (Azure Static Web Apps,
+  `rg-palermo-sites-sites/annika-site-staging`, Free tier: up to 3 previews at once).
+
+## How changes get published
+
+Branch, open a pull request, review its preview URL, merge to publish. Details for people and AI agents: [AGENTS.md](AGENTS.md).
+Staging and previews build with base `/`, a `noindex` meta tag, an `X-Robots-Tag: noindex` header and a robots.txt
+that disallows everything (`staging/`). To refresh the stable staging URL, push to the `staging` branch
+(`git push origin main:staging` mirrors main).
 - `src/content/designs/` design notes (blog posts) and `src/content/portfolio/` finished gowns: Astro content collections
   (schemas in `src/content.config.ts`). Add a Markdown file to add a post or a piece.
 - `src/pages/` Home, Designs (index and posts), Portfolio (index and pieces), About, Contact (static placeholder form;
