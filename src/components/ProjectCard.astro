@@ -8,7 +8,7 @@ interface Props {
 }
 const { project, index } = Astro.props;
 const { title, accent, sketch, finished, preview, placeholder } = project.data;
-const tilts = [-2.1, 1.7, -1.15, 2, -1.8, 1.35];
+const tilts = [-3.5, 2.8, -1.9, 3.2, -2.6, 2.2];
 const tilt = tilts[index % tilts.length];
 ---
 <a
@@ -98,8 +98,13 @@ const tilt = tilts[index % tilts.length];
       if (Date.now() - sawTouch < 700) return;
       start();
     });
-    card.addEventListener('pointerleave', stop);
-    card.addEventListener('mouseleave', stop);
+    const leave = (event: Event) => {
+      const next = 'relatedTarget' in event ? (event as MouseEvent).relatedTarget : null;
+      if (next instanceof Node && card.contains(next)) return;
+      stop();
+    };
+    card.addEventListener('pointerleave', leave);
+    card.addEventListener('mouseleave', leave);
     card.addEventListener('pointercancel', stop);
     card.addEventListener('focus', start);
     card.addEventListener('blur', stop);
