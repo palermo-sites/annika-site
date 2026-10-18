@@ -4,24 +4,24 @@
     "metrics": {
       "deployments": {
         "preview": {
-          "count": 5,
+          "count": 6,
           "failed": 0,
           "failedShare": 0.0
         },
         "prod": {
-          "count": 6,
+          "count": 7,
           "failed": 0,
           "failedShare": 0.0
         }
       },
-      "itemsDelivered": 7,
+      "itemsDelivered": 8,
       "itemsStarted": 9,
       "itemsStopped": 0,
-      "mttdDays": 0.001,
-      "netThroughput": 39,
-      "progress": 39,
+      "mttdDays": 0.002,
+      "netThroughput": 42,
+      "progress": 42,
       "rework": 0,
-      "wip": 1
+      "wip": 0
     },
     "start": "2026-10-12T00:00:00Z",
     "week": "2026-W42"

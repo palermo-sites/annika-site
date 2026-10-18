@@ -5,12 +5,12 @@ Weekly delivery numbers (ISO weeks, Monday 00:00 UTC). Written by `.github/score
 | Metric | 2026-W42 (so far) |
 |---|---|
 | Items started | 9 |
-| Items delivered | 7 |
-| Work in process | 1 |
-| Mean time to delivery (days) | 0.001 |
-| Progress / rework | 39 / 0 |
-| Prod deployments (failed) | 6 (0) |
-| Preview deployments (failed) | 5 (0) |
+| Items delivered | 8 |
+| Work in process | 0 |
+| Mean time to delivery (days) | 0.002 |
+| Progress / rework | 42 / 0 |
+| Prod deployments (failed) | 7 (0) |
+| Preview deployments (failed) | 6 (0) |
 
 ## Rolling 12 (0 finished week(s))
 
