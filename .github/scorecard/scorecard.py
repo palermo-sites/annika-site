@@ -4,13 +4,14 @@ carries its scorecard; daily granularity; America/New_York calendar days).
 
 Harvest this repository with cmis (GitHub only), read every timestamped event behind the scorecard's cells
 (`cmis connections score-drill`: items started, items delivered, forward moves, rework) plus this repository's
-GitHub Actions runs (deployments: deploy.yml on main = prod, staging.yml on pull requests = preview), and bucket them
+GitHub Actions runs (deployments: deploy.yml on main = prod, staging.yml on pull requests = UAT), and bucket them
 by calendar day in America/New_York. Writes into --data (a worktree of the scorecard-data branch):
 
   days/YYYY-MM-DD.json  one per finished day: additive raw counts, delivery-duration list and sum, item and move
                         events with timestamps, deployments per environment with outcome. Written once (--force
                         rewrites and keeps the previous counts in history).
-  daily.json            compact index of every finished day (counts only) plus today so far, for the dashboard.
+  daily.json            compact index of every finished day (counts, and `hours`: per America/New_York hour with
+                        activity or a change of work in process; quiet hours are omitted) plus today so far.
   latest.json           today so far (provisional), the last finished day, and the named views.
 
 Any grouping is computed from the additive facts: sums of counts, MTTD = sum of durations / number delivered,
@@ -28,8 +29,8 @@ SCHEMA_VERSION = 2
 TZ_NAME = 'America/New_York'
 TZ = ZoneInfo(TZ_NAME)
 UTC = dt.timezone.utc
-DEFAULT_WORKFLOWS = 'staging.yml!pull_request:preview,deploy.yml@main:prod'
-DEFAULT_ENVIRONMENTS = 'preview:Preview,prod:Delivered'
+DEFAULT_WORKFLOWS = 'staging.yml!pull_request:uat,deploy.yml@main:prod'
+DEFAULT_ENVIRONMENTS = 'uat:UAT,prod:Delivered'
 METRICS = {'itemsstarted': 'started', 'itemsdelivered': 'delivered', 'progress': 'forward', 'rework': 'rework'}
 STOP_STATUSES = {'Backlog', 'Created', 'New', 'To Do'}
 
@@ -191,6 +192,31 @@ def main():
             rs = sorted((r for r in deploys if r['env'] == envname and inday(r['at'])), key=lambda r: (r['at'], r['id']))
             dep[envname] = {'count': len(rs), 'failed': sum(1 for r in rs if r['conclusion'] != 'success'),
                             'runs': [{'id': r['id'], 'url': r['url'], 'at': zulu(r['at']), 'conclusion': r['conclusion'], 'sha': r['sha']} for r in rs]}
+        hours = []
+        t = start
+        while t < end:  # UTC steps, so DST days have 23 or 25 hours
+            t2 = t + dt.timedelta(hours=1)
+            inh = lambda x: t <= x < t2
+            hd = [e for e in delivered if inh(e['at'])]
+            hdur = [x['durationDays'] for x in delivered_items if x['durationDays'] is not None and inh(parse_ts(x['at']))]
+            hmv = [m for m in moves if inh(m['at'])]
+            hc = {'itemsStarted': sum(1 for e in started if inh(e['at'])), 'itemsDelivered': len(hd),
+                  'forwardMoves': sum(1 for m in hmv if m['kind'] == 'forward'), 'rework': sum(1 for m in hmv if m['kind'] == 'rework'),
+                  'itemsStopped': sum(1 for m in hmv if m['kind'] == 'rework' and m['to'] in STOP_STATUSES)}
+            hc['netThroughput'] = hc['forwardMoves'] - hc['rework']
+            hc['wipEndOfHour'] = sum(1 for u, s0 in started_at.items() if s0 < t2 and not (u in delivered_at and delivered_at[u] < t2))
+            hdep = {}
+            for envname in sorted(set(wf_env.values())):
+                rs = [r for r in deploys if r['env'] == envname and inh(r['at'])]
+                if rs:
+                    hdep[envname] = {'count': len(rs), 'failed': sum(1 for r in rs if r['conclusion'] != 'success')}
+            busy = any(v for k, v in hc.items() if k != 'wipEndOfHour') or hdep
+            if busy or not hours or hours[-1]['counts']['wipEndOfHour'] != hc['wipEndOfHour']:
+                lt = t.astimezone(TZ)
+                hours.append({'hour': lt.isoformat(timespec='minutes'), 'hourOfDay': lt.hour,
+                              'label': lt.strftime('%Y-%m-%d %H:00 ') + ('EDT' if lt.dst() else 'EST'),
+                              'counts': hc, 'delivery': {'count': len(hdur), 'durationSumDays': round(sum(hdur), 6)}, 'deployments': hdep})
+            t = t2
         forward = sum(1 for m in moves if m['kind'] == 'forward')
         rework = sum(1 for m in moves if m['kind'] == 'rework')
         y, w, _ = d.isocalendar()
@@ -203,6 +229,7 @@ def main():
                        'wipEndOfDay': wip},
             'delivery': {'count': len(durations), 'durationSumDays': round(sum(durations), 6), 'durationsDays': durations},
             'deployments': dep,
+            'hours': hours,
             'items': {'started': [{'id': e['id'], 'url': e['url'], 'title': e['title'], 'type': e['type'], 'at': zulu(e['at'])} for e in started],
                       'delivered': delivered_items},
             'moves': [{'id': m['id'], 'kind': m['kind'], 'from': m['from'], 'to': m['to'], 'at': zulu(m['at'])} for m in moves],
@@ -238,7 +265,8 @@ def main():
     today_doc = facts(today)
     compact = lambda doc: {k: doc[k] for k in ('date', 'isoWeek', 'counts')} | {
         'delivery': {'count': doc['delivery']['count'], 'durationSumDays': doc['delivery']['durationSumDays']},
-        'deployments': {e: {'count': v['count'], 'failed': v['failed']} for e, v in doc['deployments'].items()}}
+        'deployments': {e: {'count': v['count'], 'failed': v['failed']} for e, v in doc['deployments'].items()},
+        'hours': doc.get('hours', [])}
     daily = {'schemaVersion': SCHEMA_VERSION, 'system': slug, 'name': cfg['name'], 'repository': repo, 'timeZone': TZ_NAME,
              'days': [compact(x) for x in days], 'today': compact(today_doc)}
     latest = {'schemaVersion': SCHEMA_VERSION, 'system': slug, 'name': cfg['name'], 'repository': repo, 'timeZone': TZ_NAME,
