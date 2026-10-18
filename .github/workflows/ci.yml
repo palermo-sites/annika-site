@@ -1,0 +1,36 @@
+# CI of the website system: build, then check links and HTML. Every pull request uploads its built site as a preview.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: bash scripts/build.sh
+      - name: HTML
+        run: |
+          set -euo pipefail
+          pipx install html5validator==0.4.2
+          html5validator --root _site --also-check-css
+      - name: Links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress '_site/**/*.html'
+          fail: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
