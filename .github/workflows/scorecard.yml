@@ -102,5 +102,11 @@ jobs:
           set -euo pipefail
           git add -A
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
-          git commit -q -m "Scorecard $(TZ=America/New_York date +%F) ($CMIS_VERSION)"
+          # name the day(s) written, not the run date: one day, a range, or the views only (latest.json/daily.json)
+          written="$(git diff --cached --name-only -- 'days/*.json' | sed -E 's#days/(.*)\.json#\1#' | sort)"
+          first="$(echo "$written" | head -1)"; last="$(echo "$written" | tail -1)"
+          if [ -z "$written" ]; then title="Scorecard views $(TZ=America/New_York date +%F)"
+          elif [ "$first" = "$last" ]; then title="Scorecard $first"
+          else title="Scorecard $first..$last"; fi
+          git commit -q -m "$title ($CMIS_VERSION)"
           git push -q origin "$DATA_BRANCH"

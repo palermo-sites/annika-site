@@ -15,7 +15,8 @@ by calendar day in America/New_York. Writes into --data (a worktree of the score
   latest.json           today so far (provisional), the last finished day, and the named views.
 
 Any grouping is computed from the additive facts: sums of counts, MTTD = sum of durations / number delivered,
-work in process = the last day's end-of-day value, failed share = failed / deployments. No timestamps in committed
+work in process = the last day's end-of-day value (a pull request closed without merge leaves work in process
+at its close time and counts as items stopped), failed share = failed / deployments. No timestamps in committed
 files except the immutable meta block of a day file; a rerun with the same inputs changes nothing.
 """
 import argparse, datetime as dt, hashlib, json, os, subprocess, sys, urllib.request, urllib.error
@@ -161,6 +162,20 @@ def main():
             started_at.setdefault(e['url'], e['at'])
         if e['kind'] == 'delivered':
             delivered_at.setdefault(e['url'], e['at'])
+    # Pull requests closed without merge are stopped (abandoned) work at their close time, not work in process.
+    closed_unmerged, page = {}, 1
+    while True:
+        prs = gh(f'repos/{repo}/pulls?state=closed&per_page=100&page={page}', token) or []
+        closed_unmerged |= {str(p['number']): parse_ts(p['closed_at']) for p in prs if not p.get('merged_at') and p.get('closed_at')}
+        if len(prs) < 100:
+            break
+        page += 1
+    stopped_at, stopped_ev = {}, {}
+    for e in events:
+        if e['kind'] == 'started' and e['type'] == 'Pull Request' and e['id'] in closed_unmerged and e['url'] not in delivered_at:
+            stopped_at[e['url']] = closed_unmerged[e['id']]
+            stopped_ev[e['url']] = e
+    open_at = lambda u, s, t: s < t and not (u in delivered_at and delivered_at[u] < t) and not (u in stopped_at and stopped_at[u] < t)
 
     wf_env = {w.split(':')[0].strip(): w.split(':')[1].strip() for w in workflows.split(',')}
     deploys = []
@@ -186,7 +201,9 @@ def main():
                 durations.append(days)
             delivered_items.append({'id': e['id'], 'url': e['url'], 'title': e['title'], 'type': e['type'], 'at': zulu(e['at']),
                                     'startedAt': zulu(s) if s else None, 'durationDays': days})
-        wip = sum(1 for u, s in started_at.items() if s < end and not (u in delivered_at and delivered_at[u] < end))
+        wip = sum(1 for u, s in started_at.items() if open_at(u, s, end))
+        stopped = sorted(({'id': stopped_ev[u]['id'], 'url': u, 'title': stopped_ev[u]['title'], 'type': stopped_ev[u]['type'], 'at': t,
+                           'reason': 'closed without merge'} for u, t in stopped_at.items() if inday(t)), key=lambda x: (x['at'], x['id']))
         dep = {}
         for envname in sorted(set(wf_env.values())):
             rs = sorted((r for r in deploys if r['env'] == envname and inday(r['at'])), key=lambda r: (r['at'], r['id']))
@@ -202,9 +219,9 @@ def main():
             hmv = [m for m in moves if inh(m['at'])]
             hc = {'itemsStarted': sum(1 for e in started if inh(e['at'])), 'itemsDelivered': len(hd),
                   'forwardMoves': sum(1 for m in hmv if m['kind'] == 'forward'), 'rework': sum(1 for m in hmv if m['kind'] == 'rework'),
-                  'itemsStopped': sum(1 for m in hmv if m['kind'] == 'rework' and m['to'] in STOP_STATUSES)}
+                  'itemsStopped': sum(1 for m in hmv if m['kind'] == 'rework' and m['to'] in STOP_STATUSES) + sum(1 for x in stopped if inh(x['at']))}
             hc['netThroughput'] = hc['forwardMoves'] - hc['rework']
-            hc['wipEndOfHour'] = sum(1 for u, s0 in started_at.items() if s0 < t2 and not (u in delivered_at and delivered_at[u] < t2))
+            hc['wipEndOfHour'] = sum(1 for u, s0 in started_at.items() if open_at(u, s0, t2))
             hdep = {}
             for envname in sorted(set(wf_env.values())):
                 rs = [r for r in deploys if r['env'] == envname and inh(r['at'])]
@@ -225,13 +242,14 @@ def main():
             'start': start.isoformat(), 'end': end.isoformat(), 'isoWeek': f'{y}-W{w:02d}',
             'counts': {'itemsStarted': len(started), 'itemsDelivered': len(delivered), 'forwardMoves': forward, 'rework': rework,
                        'netThroughput': forward - rework,
-                       'itemsStopped': sum(1 for m in moves if m['kind'] == 'rework' and m['to'] in STOP_STATUSES),
+                       'itemsStopped': sum(1 for m in moves if m['kind'] == 'rework' and m['to'] in STOP_STATUSES) + len(stopped),
                        'wipEndOfDay': wip},
             'delivery': {'count': len(durations), 'durationSumDays': round(sum(durations), 6), 'durationsDays': durations},
             'deployments': dep,
             'hours': hours,
             'items': {'started': [{'id': e['id'], 'url': e['url'], 'title': e['title'], 'type': e['type'], 'at': zulu(e['at'])} for e in started],
-                      'delivered': delivered_items},
+                      'delivered': delivered_items,
+                      'stopped': [dict(x, at=zulu(x['at'])) for x in stopped]},
             'moves': [{'id': m['id'], 'kind': m['kind'], 'from': m['from'], 'to': m['to'], 'at': zulu(m['at'])} for m in moves],
             'source': {'repository': repo, 'cmisVersion': cmis_version, 'configHash': config_hash},
             'history': [],
