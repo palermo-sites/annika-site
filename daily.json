@@ -5,10 +5,10 @@
         "forwardMoves": 74,
         "itemsDelivered": 14,
         "itemsStarted": 16,
-        "itemsStopped": 0,
+        "itemsStopped": 2,
         "netThroughput": 74,
         "rework": 0,
-        "wipEndOfDay": 2
+        "wipEndOfDay": 0
       },
       "date": "2026-10-18",
       "delivery": {
@@ -74,10 +74,10 @@
             "forwardMoves": 14,
             "itemsDelivered": 3,
             "itemsStarted": 3,
-            "itemsStopped": 0,
+            "itemsStopped": 1,
             "netThroughput": 14,
             "rework": 0,
-            "wipEndOfHour": 1
+            "wipEndOfHour": 0
           },
           "delivery": {
             "count": 3,
@@ -105,7 +105,7 @@
             "itemsStopped": 0,
             "netThroughput": 5,
             "rework": 0,
-            "wipEndOfHour": 1
+            "wipEndOfHour": 0
           },
           "delivery": {
             "count": 1,
@@ -133,7 +133,7 @@
             "itemsStopped": 0,
             "netThroughput": 20,
             "rework": 0,
-            "wipEndOfHour": 1
+            "wipEndOfHour": 0
           },
           "delivery": {
             "count": 4,
@@ -158,10 +158,10 @@
             "forwardMoves": 6,
             "itemsDelivered": 0,
             "itemsStarted": 2,
-            "itemsStopped": 0,
+            "itemsStopped": 1,
             "netThroughput": 6,
             "rework": 0,
-            "wipEndOfHour": 3
+            "wipEndOfHour": 1
           },
           "delivery": {
             "count": 0,
@@ -185,7 +185,7 @@
             "itemsStopped": 0,
             "netThroughput": 1,
             "rework": 0,
-            "wipEndOfHour": 2
+            "wipEndOfHour": 0
           },
           "delivery": {
             "count": 1,
@@ -209,7 +209,7 @@
             "itemsStopped": 0,
             "netThroughput": 5,
             "rework": 0,
-            "wipEndOfHour": 2
+            "wipEndOfHour": 0
           },
           "delivery": {
             "count": 1,
@@ -237,7 +237,7 @@
             "itemsStopped": 0,
             "netThroughput": 5,
             "rework": 0,
-            "wipEndOfHour": 2
+            "wipEndOfHour": 0
           },
           "delivery": {
             "count": 1,
@@ -268,26 +268,26 @@
   "timeZone": "America/New_York",
   "today": {
     "counts": {
-      "forwardMoves": 0,
-      "itemsDelivered": 0,
-      "itemsStarted": 0,
+      "forwardMoves": 5,
+      "itemsDelivered": 1,
+      "itemsStarted": 1,
       "itemsStopped": 0,
-      "netThroughput": 0,
+      "netThroughput": 5,
       "rework": 0,
-      "wipEndOfDay": 2
+      "wipEndOfDay": 0
     },
     "date": "2026-10-19",
     "delivery": {
-      "count": 0,
-      "durationSumDays": 0
+      "count": 1,
+      "durationSumDays": 0.001644
     },
     "deployments": {
       "prod": {
-        "count": 0,
+        "count": 1,
         "failed": 0
       },
       "uat": {
-        "count": 0,
+        "count": 2,
         "failed": 0
       }
     },
@@ -300,7 +300,7 @@
           "itemsStopped": 0,
           "netThroughput": 0,
           "rework": 0,
-          "wipEndOfHour": 2
+          "wipEndOfHour": 0
         },
         "delivery": {
           "count": 0,
@@ -310,6 +310,34 @@
         "hour": "2026-10-19T00:00-04:00",
         "hourOfDay": 0,
         "label": "2026-10-19 00:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 5,
+          "itemsDelivered": 1,
+          "itemsStarted": 1,
+          "itemsStopped": 0,
+          "netThroughput": 5,
+          "rework": 0,
+          "wipEndOfHour": 0
+        },
+        "delivery": {
+          "count": 1,
+          "durationSumDays": 0.001644
+        },
+        "deployments": {
+          "prod": {
+            "count": 1,
+            "failed": 0
+          },
+          "uat": {
+            "count": 2,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-19T08:00-04:00",
+        "hourOfDay": 8,
+        "label": "2026-10-19 08:00 EDT"
       }
     ],
     "isoWeek": "2026-W43"

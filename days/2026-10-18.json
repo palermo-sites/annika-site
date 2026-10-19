@@ -3,10 +3,10 @@
     "forwardMoves": 74,
     "itemsDelivered": 14,
     "itemsStarted": 16,
-    "itemsStopped": 0,
+    "itemsStopped": 2,
     "netThroughput": 74,
     "rework": 0,
-    "wipEndOfDay": 2
+    "wipEndOfDay": 0
   },
   "date": "2026-10-18",
   "delivery": {
@@ -268,7 +268,26 @@
     }
   },
   "end": "2026-10-19T00:00:00-04:00",
-  "history": [],
+  "history": [
+    {
+      "counts": {
+        "forwardMoves": 74,
+        "itemsDelivered": 14,
+        "itemsStarted": 16,
+        "itemsStopped": 0,
+        "netThroughput": 74,
+        "rework": 0,
+        "wipEndOfDay": 2
+      },
+      "reason": "force",
+      "replacedAt": "2026-10-19T12:24:28Z",
+      "source": {
+        "cmisVersion": "1.0.0+cb90756",
+        "configHash": "sha256:cdf90916ebcc89d7",
+        "repository": "palermo-sites/annika-site"
+      }
+    }
+  ],
   "hours": [
     {
       "counts": {
@@ -318,10 +337,10 @@
         "forwardMoves": 14,
         "itemsDelivered": 3,
         "itemsStarted": 3,
-        "itemsStopped": 0,
+        "itemsStopped": 1,
         "netThroughput": 14,
         "rework": 0,
-        "wipEndOfHour": 1
+        "wipEndOfHour": 0
       },
       "delivery": {
         "count": 3,
@@ -349,7 +368,7 @@
         "itemsStopped": 0,
         "netThroughput": 5,
         "rework": 0,
-        "wipEndOfHour": 1
+        "wipEndOfHour": 0
       },
       "delivery": {
         "count": 1,
@@ -377,7 +396,7 @@
         "itemsStopped": 0,
         "netThroughput": 20,
         "rework": 0,
-        "wipEndOfHour": 1
+        "wipEndOfHour": 0
       },
       "delivery": {
         "count": 4,
@@ -402,10 +421,10 @@
         "forwardMoves": 6,
         "itemsDelivered": 0,
         "itemsStarted": 2,
-        "itemsStopped": 0,
+        "itemsStopped": 1,
         "netThroughput": 6,
         "rework": 0,
-        "wipEndOfHour": 3
+        "wipEndOfHour": 1
       },
       "delivery": {
         "count": 0,
@@ -429,7 +448,7 @@
         "itemsStopped": 0,
         "netThroughput": 1,
         "rework": 0,
-        "wipEndOfHour": 2
+        "wipEndOfHour": 0
       },
       "delivery": {
         "count": 1,
@@ -453,7 +472,7 @@
         "itemsStopped": 0,
         "netThroughput": 5,
         "rework": 0,
-        "wipEndOfHour": 2
+        "wipEndOfHour": 0
       },
       "delivery": {
         "count": 1,
@@ -481,7 +500,7 @@
         "itemsStopped": 0,
         "netThroughput": 5,
         "rework": 0,
-        "wipEndOfHour": 2
+        "wipEndOfHour": 0
       },
       "delivery": {
         "count": 1,
@@ -745,11 +764,29 @@
         "type": "Pull Request",
         "url": "https://github.com/palermo-sites/annika-site/issues/10"
       }
+    ],
+    "stopped": [
+      {
+        "at": "2026-10-18T06:12:19Z",
+        "id": "1",
+        "reason": "closed without merge",
+        "title": "Test: preview pipeline (do not merge)",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/1"
+      },
+      {
+        "at": "2026-10-18T20:22:23Z",
+        "id": "8",
+        "reason": "closed without merge",
+        "title": "Test: UAT on GitHub Pages (do not merge)",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/8"
+      }
     ]
   },
   "meta": {
-    "generatedAt": "2026-10-19T12:04:52Z",
-    "runUrl": "https://github.com/palermo-sites/annika-site/actions/runs/39248979206"
+    "generatedAt": "2026-10-19T12:24:28Z",
+    "runUrl": "https://github.com/palermo-sites/annika-site/actions/runs/39251459532"
   },
   "moves": [
     {
