@@ -1,0 +1,1283 @@
+{
+  "counts": {
+    "forwardMoves": 74,
+    "itemsDelivered": 14,
+    "itemsStarted": 16,
+    "itemsStopped": 0,
+    "netThroughput": 74,
+    "rework": 0,
+    "wipEndOfDay": 2
+  },
+  "date": "2026-10-18",
+  "delivery": {
+    "count": 14,
+    "durationSumDays": 0.112558,
+    "durationsDays": [
+      0.000556,
+      0.000764,
+      0.000544,
+      0.001991,
+      0.000718,
+      0.00059,
+      0.005266,
+      0.002083,
+      0.00169,
+      0.001655,
+      0.00169,
+      0.063322,
+      0.004282,
+      0.027407
+    ]
+  },
+  "deployments": {
+    "prod": {
+      "count": 13,
+      "failed": 0,
+      "runs": [
+        {
+          "at": "2026-10-18T04:51:37Z",
+          "conclusion": "success",
+          "id": 39098551101,
+          "sha": "30e44ce",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098551101"
+        },
+        {
+          "at": "2026-10-18T04:53:23Z",
+          "conclusion": "success",
+          "id": 39098651580,
+          "sha": "cfe1ea2",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098651580"
+        },
+        {
+          "at": "2026-10-18T04:54:54Z",
+          "conclusion": "success",
+          "id": 39098735659,
+          "sha": "b2a44a1",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098735659"
+        },
+        {
+          "at": "2026-10-18T06:00:56Z",
+          "conclusion": "success",
+          "id": 39102530440,
+          "sha": "c30ad1e",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39102530440"
+        },
+        {
+          "at": "2026-10-18T06:09:29Z",
+          "conclusion": "success",
+          "id": 39103039752,
+          "sha": "97aa9ec",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103039752"
+        },
+        {
+          "at": "2026-10-18T16:24:44Z",
+          "conclusion": "success",
+          "id": 39144872661,
+          "sha": "cd47858",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144872661"
+        },
+        {
+          "at": "2026-10-18T19:04:41Z",
+          "conclusion": "success",
+          "id": 39157089166,
+          "sha": "00bf214",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157089166"
+        },
+        {
+          "at": "2026-10-18T19:22:39Z",
+          "conclusion": "success",
+          "id": 39158485421,
+          "sha": "ea8be52",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158485421"
+        },
+        {
+          "at": "2026-10-18T19:29:27Z",
+          "conclusion": "success",
+          "id": 39158993867,
+          "sha": "8b329d2",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158993867"
+        },
+        {
+          "at": "2026-10-18T19:48:14Z",
+          "conclusion": "success",
+          "id": 39160423009,
+          "sha": "7d9ca7a",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160423009"
+        },
+        {
+          "at": "2026-10-18T21:50:41Z",
+          "conclusion": "success",
+          "id": 39162948173,
+          "sha": "da7beb7",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39162948173"
+        },
+        {
+          "at": "2026-10-18T22:43:15Z",
+          "conclusion": "success",
+          "id": 39173456149,
+          "sha": "460aaf2",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39173456149"
+        },
+        {
+          "at": "2026-10-18T23:43:16Z",
+          "conclusion": "success",
+          "id": 39177695491,
+          "sha": "d49e748",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39177695491"
+        }
+      ]
+    },
+    "uat": {
+      "count": 19,
+      "failed": 0,
+      "runs": [
+        {
+          "at": "2026-10-18T06:10:34Z",
+          "conclusion": "success",
+          "id": 39103106600,
+          "sha": "46ba6b6",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103106600"
+        },
+        {
+          "at": "2026-10-18T06:12:21Z",
+          "conclusion": "success",
+          "id": 39103210766,
+          "sha": "46ba6b6",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103210766"
+        },
+        {
+          "at": "2026-10-18T16:18:39Z",
+          "conclusion": "success",
+          "id": 39144411856,
+          "sha": "0576f9f",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144411856"
+        },
+        {
+          "at": "2026-10-18T16:24:12Z",
+          "conclusion": "success",
+          "id": 39144832446,
+          "sha": "0576f9f",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144832446"
+        },
+        {
+          "at": "2026-10-18T19:02:14Z",
+          "conclusion": "success",
+          "id": 39156894343,
+          "sha": "8916ac4",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39156894343"
+        },
+        {
+          "at": "2026-10-18T19:04:04Z",
+          "conclusion": "success",
+          "id": 39157041241,
+          "sha": "8916ac4",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157041241"
+        },
+        {
+          "at": "2026-10-18T19:21:01Z",
+          "conclusion": "success",
+          "id": 39158360048,
+          "sha": "650c352",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158360048"
+        },
+        {
+          "at": "2026-10-18T19:22:04Z",
+          "conclusion": "success",
+          "id": 39158438861,
+          "sha": "650c352",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158438861"
+        },
+        {
+          "at": "2026-10-18T19:27:45Z",
+          "conclusion": "success",
+          "id": 39158871574,
+          "sha": "fab4ae1",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158871574"
+        },
+        {
+          "at": "2026-10-18T19:29:01Z",
+          "conclusion": "success",
+          "id": 39158964059,
+          "sha": "fab4ae1",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158964059"
+        },
+        {
+          "at": "2026-10-18T19:46:18Z",
+          "conclusion": "success",
+          "id": 39160277233,
+          "sha": "1a21408",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160277233"
+        },
+        {
+          "at": "2026-10-18T19:47:47Z",
+          "conclusion": "success",
+          "id": 39160388190,
+          "sha": "1a21408",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160388190"
+        },
+        {
+          "at": "2026-10-18T20:20:01Z",
+          "conclusion": "success",
+          "id": 39162821861,
+          "sha": "e65fea8",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39162821861"
+        },
+        {
+          "at": "2026-10-18T20:21:12Z",
+          "conclusion": "success",
+          "id": 39162915303,
+          "sha": "fa41636",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39162915303"
+        },
+        {
+          "at": "2026-10-18T20:22:31Z",
+          "conclusion": "success",
+          "id": 39163015030,
+          "sha": "da7beb7",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39163015030"
+        },
+        {
+          "at": "2026-10-18T22:37:53Z",
+          "conclusion": "success",
+          "id": 39173073303,
+          "sha": "558d7c8",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39173073303"
+        },
+        {
+          "at": "2026-10-18T22:42:42Z",
+          "conclusion": "success",
+          "id": 39173419249,
+          "sha": "460aaf2",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39173419249"
+        },
+        {
+          "at": "2026-10-18T23:38:02Z",
+          "conclusion": "success",
+          "id": 39177337481,
+          "sha": "998b96b",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39177337481"
+        },
+        {
+          "at": "2026-10-18T23:42:41Z",
+          "conclusion": "success",
+          "id": 39177654129,
+          "sha": "d49e748",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39177654129"
+        }
+      ]
+    }
+  },
+  "end": "2026-10-19T00:00:00-04:00",
+  "history": [],
+  "hours": [
+    {
+      "counts": {
+        "forwardMoves": 15,
+        "itemsDelivered": 3,
+        "itemsStarted": 3,
+        "itemsStopped": 0,
+        "netThroughput": 15,
+        "rework": 0,
+        "wipEndOfHour": 0
+      },
+      "delivery": {
+        "count": 3,
+        "durationSumDays": 0.001864
+      },
+      "deployments": {
+        "prod": {
+          "count": 3,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T00:00-04:00",
+      "hourOfDay": 0,
+      "label": "2026-10-18 00:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 3,
+        "itemsDelivered": 0,
+        "itemsStarted": 1,
+        "itemsStopped": 0,
+        "netThroughput": 3,
+        "rework": 0,
+        "wipEndOfHour": 1
+      },
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0
+      },
+      "deployments": {},
+      "hour": "2026-10-18T01:00-04:00",
+      "hourOfDay": 1,
+      "label": "2026-10-18 01:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 14,
+        "itemsDelivered": 3,
+        "itemsStarted": 3,
+        "itemsStopped": 0,
+        "netThroughput": 14,
+        "rework": 0,
+        "wipEndOfHour": 1
+      },
+      "delivery": {
+        "count": 3,
+        "durationSumDays": 0.003299
+      },
+      "deployments": {
+        "prod": {
+          "count": 2,
+          "failed": 0
+        },
+        "uat": {
+          "count": 2,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T02:00-04:00",
+      "hourOfDay": 2,
+      "label": "2026-10-18 02:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 5,
+        "itemsDelivered": 1,
+        "itemsStarted": 1,
+        "itemsStopped": 0,
+        "netThroughput": 5,
+        "rework": 0,
+        "wipEndOfHour": 1
+      },
+      "delivery": {
+        "count": 1,
+        "durationSumDays": 0.005266
+      },
+      "deployments": {
+        "prod": {
+          "count": 1,
+          "failed": 0
+        },
+        "uat": {
+          "count": 2,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T12:00-04:00",
+      "hourOfDay": 12,
+      "label": "2026-10-18 12:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 20,
+        "itemsDelivered": 4,
+        "itemsStarted": 4,
+        "itemsStopped": 0,
+        "netThroughput": 20,
+        "rework": 0,
+        "wipEndOfHour": 1
+      },
+      "delivery": {
+        "count": 4,
+        "durationSumDays": 0.007118
+      },
+      "deployments": {
+        "prod": {
+          "count": 4,
+          "failed": 0
+        },
+        "uat": {
+          "count": 8,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T15:00-04:00",
+      "hourOfDay": 15,
+      "label": "2026-10-18 15:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 6,
+        "itemsDelivered": 0,
+        "itemsStarted": 2,
+        "itemsStopped": 0,
+        "netThroughput": 6,
+        "rework": 0,
+        "wipEndOfHour": 3
+      },
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0
+      },
+      "deployments": {
+        "uat": {
+          "count": 3,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T16:00-04:00",
+      "hourOfDay": 16,
+      "label": "2026-10-18 16:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 1,
+        "itemsDelivered": 1,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 1,
+        "rework": 0,
+        "wipEndOfHour": 2
+      },
+      "delivery": {
+        "count": 1,
+        "durationSumDays": 0.063322
+      },
+      "deployments": {
+        "prod": {
+          "count": 1,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T17:00-04:00",
+      "hourOfDay": 17,
+      "label": "2026-10-18 17:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 5,
+        "itemsDelivered": 1,
+        "itemsStarted": 1,
+        "itemsStopped": 0,
+        "netThroughput": 5,
+        "rework": 0,
+        "wipEndOfHour": 2
+      },
+      "delivery": {
+        "count": 1,
+        "durationSumDays": 0.004282
+      },
+      "deployments": {
+        "prod": {
+          "count": 1,
+          "failed": 0
+        },
+        "uat": {
+          "count": 2,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T18:00-04:00",
+      "hourOfDay": 18,
+      "label": "2026-10-18 18:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 5,
+        "itemsDelivered": 1,
+        "itemsStarted": 1,
+        "itemsStopped": 0,
+        "netThroughput": 5,
+        "rework": 0,
+        "wipEndOfHour": 2
+      },
+      "delivery": {
+        "count": 1,
+        "durationSumDays": 0.027407
+      },
+      "deployments": {
+        "prod": {
+          "count": 1,
+          "failed": 0
+        },
+        "uat": {
+          "count": 2,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-18T19:00-04:00",
+      "hourOfDay": 19,
+      "label": "2026-10-18 19:00 EDT"
+    }
+  ],
+  "isoWeek": "2026-W42",
+  "items": {
+    "delivered": [
+      {
+        "at": "2026-10-18T04:51:56Z",
+        "durationDays": 0.000556,
+        "id": "934809",
+        "startedAt": "2026-10-18T04:51:08Z",
+        "title": "Website system annika from the website platform template",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/934809"
+      },
+      {
+        "at": "2026-10-18T04:53:51Z",
+        "durationDays": 0.000764,
+        "id": "926905",
+        "startedAt": "2026-10-18T04:52:45Z",
+        "title": "Astro site: minimal home and about pages, site https://annikapalermo.\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/926905"
+      },
+      {
+        "at": "2026-10-18T04:55:14Z",
+        "durationDays": 0.000544,
+        "id": "903837",
+        "startedAt": "2026-10-18T04:54:27Z",
+        "title": "Canonical URL names annikapalermo.com without the github.io base path",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/903837"
+      },
+      {
+        "at": "2026-10-18T06:01:24Z",
+        "durationDays": 0.001991,
+        "id": "976665",
+        "startedAt": "2026-10-18T05:58:32Z",
+        "title": "Sample bridal designer site: designs and portfolio collections, home,\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/976665"
+      },
+      {
+        "at": "2026-10-18T06:01:24Z",
+        "durationDays": 0.000718,
+        "id": "981952",
+        "startedAt": "2026-10-18T06:00:22Z",
+        "title": "CI: validate HTML only; the validator's CSS checker rejects modern CS\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/981952"
+      },
+      {
+        "at": "2026-10-18T06:09:53Z",
+        "durationDays": 0.00059,
+        "id": "989727",
+        "startedAt": "2026-10-18T06:09:02Z",
+        "title": "Staging on Azure Static Web Apps: per-PR previews and a stable stagin\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/989727"
+      },
+      {
+        "at": "2026-10-18T16:25:11Z",
+        "durationDays": 0.005266,
+        "id": "2",
+        "startedAt": "2026-10-18T16:17:36Z",
+        "title": "Add the weekly delivery scorecard as a GitHub Action",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/2"
+      },
+      {
+        "at": "2026-10-18T19:05:08Z",
+        "durationDays": 0.002083,
+        "id": "3",
+        "startedAt": "2026-10-18T19:02:08Z",
+        "title": "Per-site scorecard: Actions deployments, HTML report, artifact and job summary",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/3"
+      },
+      {
+        "at": "2026-10-18T19:23:21Z",
+        "durationDays": 0.00169,
+        "id": "4",
+        "startedAt": "2026-10-18T19:20:55Z",
+        "title": "Scorecard: full report on the Actions run Summary page",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/4"
+      },
+      {
+        "at": "2026-10-18T19:30:00Z",
+        "durationDays": 0.001655,
+        "id": "5",
+        "startedAt": "2026-10-18T19:27:37Z",
+        "title": "Daily scorecard: per-day facts, rolling 7/30/90, by week/month/quarter",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/5"
+      },
+      {
+        "at": "2026-10-18T19:48:39Z",
+        "durationDays": 0.00169,
+        "id": "6",
+        "startedAt": "2026-10-18T19:46:13Z",
+        "title": "Scorecard: hours and UAT",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/6"
+      },
+      {
+        "at": "2026-10-18T21:51:06Z",
+        "durationDays": 0.063322,
+        "id": "7",
+        "startedAt": "2026-10-18T20:19:55Z",
+        "title": "UAT on GitHub Pages instead of Azure Static Web Apps",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/7"
+      },
+      {
+        "at": "2026-10-18T22:43:43Z",
+        "durationDays": 0.004282,
+        "id": "9",
+        "startedAt": "2026-10-18T22:37:33Z",
+        "title": "Custom domains: annikapalermo.com and uat.annikapalermo.com",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/9"
+      },
+      {
+        "at": "2026-10-18T23:43:44Z",
+        "durationDays": 0.027407,
+        "id": "10",
+        "startedAt": "2026-10-18T23:04:16Z",
+        "title": "Dress-study sketchbook in place of the sample couture site",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/10"
+      }
+    ],
+    "started": [
+      {
+        "at": "2026-10-18T04:51:08Z",
+        "id": "934809",
+        "title": "Website system annika from the website platform template",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/934809"
+      },
+      {
+        "at": "2026-10-18T04:52:45Z",
+        "id": "926905",
+        "title": "Astro site: minimal home and about pages, site https://annikapalermo.\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/926905"
+      },
+      {
+        "at": "2026-10-18T04:54:27Z",
+        "id": "903837",
+        "title": "Canonical URL names annikapalermo.com without the github.io base path",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/903837"
+      },
+      {
+        "at": "2026-10-18T05:58:32Z",
+        "id": "976665",
+        "title": "Sample bridal designer site: designs and portfolio collections, home,\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/976665"
+      },
+      {
+        "at": "2026-10-18T06:00:22Z",
+        "id": "981952",
+        "title": "CI: validate HTML only; the validator's CSS checker rejects modern CS\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/981952"
+      },
+      {
+        "at": "2026-10-18T06:09:02Z",
+        "id": "989727",
+        "title": "Staging on Azure Static Web Apps: per-PR previews and a stable stagin\u2026",
+        "type": "Commit",
+        "url": "https://github.com/palermo-sites/annika-site/issues/989727"
+      },
+      {
+        "at": "2026-10-18T06:10:29Z",
+        "id": "1",
+        "title": "Test: preview pipeline (do not merge)",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/1"
+      },
+      {
+        "at": "2026-10-18T16:17:36Z",
+        "id": "2",
+        "title": "Add the weekly delivery scorecard as a GitHub Action",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/2"
+      },
+      {
+        "at": "2026-10-18T19:02:08Z",
+        "id": "3",
+        "title": "Per-site scorecard: Actions deployments, HTML report, artifact and job summary",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/3"
+      },
+      {
+        "at": "2026-10-18T19:20:55Z",
+        "id": "4",
+        "title": "Scorecard: full report on the Actions run Summary page",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/4"
+      },
+      {
+        "at": "2026-10-18T19:27:37Z",
+        "id": "5",
+        "title": "Daily scorecard: per-day facts, rolling 7/30/90, by week/month/quarter",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/5"
+      },
+      {
+        "at": "2026-10-18T19:46:13Z",
+        "id": "6",
+        "title": "Scorecard: hours and UAT",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/6"
+      },
+      {
+        "at": "2026-10-18T20:19:55Z",
+        "id": "7",
+        "title": "UAT on GitHub Pages instead of Azure Static Web Apps",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/7"
+      },
+      {
+        "at": "2026-10-18T20:21:07Z",
+        "id": "8",
+        "title": "Test: UAT on GitHub Pages (do not merge)",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/8"
+      },
+      {
+        "at": "2026-10-18T22:37:33Z",
+        "id": "9",
+        "title": "Custom domains: annikapalermo.com and uat.annikapalermo.com",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/9"
+      },
+      {
+        "at": "2026-10-18T23:04:16Z",
+        "id": "10",
+        "title": "Dress-study sketchbook in place of the sample couture site",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/10"
+      }
+    ]
+  },
+  "meta": {
+    "generatedAt": "2026-10-19T12:04:52Z",
+    "runUrl": "https://github.com/palermo-sites/annika-site/actions/runs/39248979206"
+  },
+  "moves": [
+    {
+      "at": "2026-10-18T04:51:08Z",
+      "from": "Created",
+      "id": "934809",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T04:51:08Z",
+      "from": "Development",
+      "id": "934809",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T04:51:08Z",
+      "from": "In Review",
+      "id": "934809",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T04:51:56Z",
+      "from": "Merged",
+      "id": "934809",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T04:51:56Z",
+      "from": "UAT",
+      "id": "934809",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T04:52:45Z",
+      "from": "Created",
+      "id": "926905",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T04:52:45Z",
+      "from": "Development",
+      "id": "926905",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T04:52:45Z",
+      "from": "In Review",
+      "id": "926905",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T04:53:51Z",
+      "from": "Merged",
+      "id": "926905",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T04:53:51Z",
+      "from": "UAT",
+      "id": "926905",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T04:54:27Z",
+      "from": "Created",
+      "id": "903837",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T04:54:27Z",
+      "from": "Development",
+      "id": "903837",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T04:54:27Z",
+      "from": "In Review",
+      "id": "903837",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T04:55:14Z",
+      "from": "Merged",
+      "id": "903837",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T04:55:14Z",
+      "from": "UAT",
+      "id": "903837",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T05:58:32Z",
+      "from": "Created",
+      "id": "976665",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T05:58:32Z",
+      "from": "Development",
+      "id": "976665",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T05:58:32Z",
+      "from": "In Review",
+      "id": "976665",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T06:00:22Z",
+      "from": "Created",
+      "id": "981952",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T06:00:22Z",
+      "from": "Development",
+      "id": "981952",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T06:00:22Z",
+      "from": "In Review",
+      "id": "981952",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T06:01:24Z",
+      "from": "Merged",
+      "id": "976665",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T06:01:24Z",
+      "from": "UAT",
+      "id": "976665",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T06:01:24Z",
+      "from": "Merged",
+      "id": "981952",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T06:01:24Z",
+      "from": "UAT",
+      "id": "981952",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T06:09:02Z",
+      "from": "Created",
+      "id": "989727",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T06:09:02Z",
+      "from": "Development",
+      "id": "989727",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T06:09:02Z",
+      "from": "In Review",
+      "id": "989727",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T06:09:53Z",
+      "from": "Merged",
+      "id": "989727",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T06:09:53Z",
+      "from": "UAT",
+      "id": "989727",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T06:10:29Z",
+      "from": "Created",
+      "id": "1",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T06:10:32Z",
+      "from": "Development",
+      "id": "1",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T16:17:36Z",
+      "from": "Created",
+      "id": "2",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T16:17:43Z",
+      "from": "Development",
+      "id": "2",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T16:24:09Z",
+      "from": "In Review",
+      "id": "2",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T16:25:11Z",
+      "from": "Merged",
+      "id": "2",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T16:25:11Z",
+      "from": "UAT",
+      "id": "2",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T19:02:08Z",
+      "from": "Created",
+      "id": "3",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T19:02:11Z",
+      "from": "Development",
+      "id": "3",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T19:04:02Z",
+      "from": "In Review",
+      "id": "3",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T19:05:08Z",
+      "from": "Merged",
+      "id": "3",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T19:05:08Z",
+      "from": "UAT",
+      "id": "3",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T19:20:55Z",
+      "from": "Created",
+      "id": "4",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T19:20:57Z",
+      "from": "Development",
+      "id": "4",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T19:22:01Z",
+      "from": "In Review",
+      "id": "4",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T19:23:21Z",
+      "from": "Merged",
+      "id": "4",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T19:23:21Z",
+      "from": "UAT",
+      "id": "4",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T19:27:37Z",
+      "from": "Created",
+      "id": "5",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T19:27:42Z",
+      "from": "Development",
+      "id": "5",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T19:28:59Z",
+      "from": "In Review",
+      "id": "5",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T19:30:00Z",
+      "from": "Merged",
+      "id": "5",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T19:30:00Z",
+      "from": "UAT",
+      "id": "5",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T19:46:13Z",
+      "from": "Created",
+      "id": "6",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T19:46:15Z",
+      "from": "Development",
+      "id": "6",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T19:47:44Z",
+      "from": "In Review",
+      "id": "6",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T19:48:39Z",
+      "from": "Merged",
+      "id": "6",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T19:48:39Z",
+      "from": "UAT",
+      "id": "6",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T20:19:55Z",
+      "from": "Created",
+      "id": "7",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T20:19:57Z",
+      "from": "Development",
+      "id": "7",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T20:21:01Z",
+      "from": "In Review",
+      "id": "7",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T20:21:07Z",
+      "from": "Created",
+      "id": "8",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T20:21:09Z",
+      "from": "Development",
+      "id": "8",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T20:22:18Z",
+      "from": "Merged",
+      "id": "7",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T21:51:06Z",
+      "from": "UAT",
+      "id": "7",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T22:37:33Z",
+      "from": "Created",
+      "id": "9",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T22:37:38Z",
+      "from": "Development",
+      "id": "9",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T22:42:39Z",
+      "from": "In Review",
+      "id": "9",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T22:43:29Z",
+      "from": "Merged",
+      "id": "9",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T22:43:43Z",
+      "from": "UAT",
+      "id": "9",
+      "kind": "forward",
+      "to": "Delivered"
+    },
+    {
+      "at": "2026-10-18T23:04:16Z",
+      "from": "Created",
+      "id": "10",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-18T23:04:27Z",
+      "from": "Development",
+      "id": "10",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-18T23:42:38Z",
+      "from": "In Review",
+      "id": "10",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-18T23:43:24Z",
+      "from": "Merged",
+      "id": "10",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-18T23:43:44Z",
+      "from": "UAT",
+      "id": "10",
+      "kind": "forward",
+      "to": "Delivered"
+    }
+  ],
+  "schemaVersion": 2,
+  "source": {
+    "cmisVersion": "1.0.0+cb90756",
+    "configHash": "sha256:cdf90916ebcc89d7",
+    "repository": "palermo-sites/annika-site"
+  },
+  "start": "2026-10-18T00:00:00-04:00",
+  "system": "annika",
+  "timeZone": "America/New_York"
+}

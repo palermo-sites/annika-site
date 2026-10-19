@@ -1,6 +1,265 @@
 {
   "daily": "daily.json",
-  "lastDay": null,
+  "lastDay": {
+    "counts": {
+      "forwardMoves": 74,
+      "itemsDelivered": 14,
+      "itemsStarted": 16,
+      "itemsStopped": 0,
+      "netThroughput": 74,
+      "rework": 0,
+      "wipEndOfDay": 2
+    },
+    "date": "2026-10-18",
+    "delivery": {
+      "count": 14,
+      "durationSumDays": 0.112558
+    },
+    "deployments": {
+      "prod": {
+        "count": 13,
+        "failed": 0
+      },
+      "uat": {
+        "count": 19,
+        "failed": 0
+      }
+    },
+    "hours": [
+      {
+        "counts": {
+          "forwardMoves": 15,
+          "itemsDelivered": 3,
+          "itemsStarted": 3,
+          "itemsStopped": 0,
+          "netThroughput": 15,
+          "rework": 0,
+          "wipEndOfHour": 0
+        },
+        "delivery": {
+          "count": 3,
+          "durationSumDays": 0.001864
+        },
+        "deployments": {
+          "prod": {
+            "count": 3,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T00:00-04:00",
+        "hourOfDay": 0,
+        "label": "2026-10-18 00:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 3,
+          "itemsDelivered": 0,
+          "itemsStarted": 1,
+          "itemsStopped": 0,
+          "netThroughput": 3,
+          "rework": 0,
+          "wipEndOfHour": 1
+        },
+        "delivery": {
+          "count": 0,
+          "durationSumDays": 0
+        },
+        "deployments": {},
+        "hour": "2026-10-18T01:00-04:00",
+        "hourOfDay": 1,
+        "label": "2026-10-18 01:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 14,
+          "itemsDelivered": 3,
+          "itemsStarted": 3,
+          "itemsStopped": 0,
+          "netThroughput": 14,
+          "rework": 0,
+          "wipEndOfHour": 1
+        },
+        "delivery": {
+          "count": 3,
+          "durationSumDays": 0.003299
+        },
+        "deployments": {
+          "prod": {
+            "count": 2,
+            "failed": 0
+          },
+          "uat": {
+            "count": 2,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T02:00-04:00",
+        "hourOfDay": 2,
+        "label": "2026-10-18 02:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 5,
+          "itemsDelivered": 1,
+          "itemsStarted": 1,
+          "itemsStopped": 0,
+          "netThroughput": 5,
+          "rework": 0,
+          "wipEndOfHour": 1
+        },
+        "delivery": {
+          "count": 1,
+          "durationSumDays": 0.005266
+        },
+        "deployments": {
+          "prod": {
+            "count": 1,
+            "failed": 0
+          },
+          "uat": {
+            "count": 2,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T12:00-04:00",
+        "hourOfDay": 12,
+        "label": "2026-10-18 12:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 20,
+          "itemsDelivered": 4,
+          "itemsStarted": 4,
+          "itemsStopped": 0,
+          "netThroughput": 20,
+          "rework": 0,
+          "wipEndOfHour": 1
+        },
+        "delivery": {
+          "count": 4,
+          "durationSumDays": 0.007118
+        },
+        "deployments": {
+          "prod": {
+            "count": 4,
+            "failed": 0
+          },
+          "uat": {
+            "count": 8,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T15:00-04:00",
+        "hourOfDay": 15,
+        "label": "2026-10-18 15:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 6,
+          "itemsDelivered": 0,
+          "itemsStarted": 2,
+          "itemsStopped": 0,
+          "netThroughput": 6,
+          "rework": 0,
+          "wipEndOfHour": 3
+        },
+        "delivery": {
+          "count": 0,
+          "durationSumDays": 0
+        },
+        "deployments": {
+          "uat": {
+            "count": 3,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T16:00-04:00",
+        "hourOfDay": 16,
+        "label": "2026-10-18 16:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 1,
+          "itemsDelivered": 1,
+          "itemsStarted": 0,
+          "itemsStopped": 0,
+          "netThroughput": 1,
+          "rework": 0,
+          "wipEndOfHour": 2
+        },
+        "delivery": {
+          "count": 1,
+          "durationSumDays": 0.063322
+        },
+        "deployments": {
+          "prod": {
+            "count": 1,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T17:00-04:00",
+        "hourOfDay": 17,
+        "label": "2026-10-18 17:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 5,
+          "itemsDelivered": 1,
+          "itemsStarted": 1,
+          "itemsStopped": 0,
+          "netThroughput": 5,
+          "rework": 0,
+          "wipEndOfHour": 2
+        },
+        "delivery": {
+          "count": 1,
+          "durationSumDays": 0.004282
+        },
+        "deployments": {
+          "prod": {
+            "count": 1,
+            "failed": 0
+          },
+          "uat": {
+            "count": 2,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T18:00-04:00",
+        "hourOfDay": 18,
+        "label": "2026-10-18 18:00 EDT"
+      },
+      {
+        "counts": {
+          "forwardMoves": 5,
+          "itemsDelivered": 1,
+          "itemsStarted": 1,
+          "itemsStopped": 0,
+          "netThroughput": 5,
+          "rework": 0,
+          "wipEndOfHour": 2
+        },
+        "delivery": {
+          "count": 1,
+          "durationSumDays": 0.027407
+        },
+        "deployments": {
+          "prod": {
+            "count": 1,
+            "failed": 0
+          },
+          "uat": {
+            "count": 2,
+            "failed": 0
+          }
+        },
+        "hour": "2026-10-18T19:00-04:00",
+        "hourOfDay": 19,
+        "label": "2026-10-18 19:00 EDT"
+      }
+    ],
+    "isoWeek": "2026-W42"
+  },
   "name": "Annika Palermo",
   "report": "index.html",
   "repository": "palermo-sites/annika-site",
@@ -9,204 +268,36 @@
   "timeZone": "America/New_York",
   "today": {
     "counts": {
-      "forwardMoves": 57,
-      "itemsDelivered": 11,
-      "itemsStarted": 12,
+      "forwardMoves": 0,
+      "itemsDelivered": 0,
+      "itemsStarted": 0,
       "itemsStopped": 0,
-      "netThroughput": 57,
+      "netThroughput": 0,
       "rework": 0,
-      "wipEndOfDay": 1
+      "wipEndOfDay": 2
     },
-    "date": "2026-10-18",
+    "date": "2026-10-19",
     "delivery": {
-      "count": 11,
-      "durationSumDays": 0.017547,
-      "durationsDays": [
-        0.000556,
-        0.000764,
-        0.000544,
-        0.001991,
-        0.000718,
-        0.00059,
-        0.005266,
-        0.002083,
-        0.00169,
-        0.001655,
-        0.00169
-      ]
+      "count": 0,
+      "durationSumDays": 0,
+      "durationsDays": []
     },
     "deployments": {
       "prod": {
-        "count": 10,
+        "count": 0,
         "failed": 0,
-        "runs": [
-          {
-            "at": "2026-10-18T04:51:37Z",
-            "conclusion": "success",
-            "id": 39098551101,
-            "sha": "30e44ce",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098551101"
-          },
-          {
-            "at": "2026-10-18T04:53:23Z",
-            "conclusion": "success",
-            "id": 39098651580,
-            "sha": "cfe1ea2",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098651580"
-          },
-          {
-            "at": "2026-10-18T04:54:54Z",
-            "conclusion": "success",
-            "id": 39098735659,
-            "sha": "b2a44a1",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39098735659"
-          },
-          {
-            "at": "2026-10-18T06:00:56Z",
-            "conclusion": "success",
-            "id": 39102530440,
-            "sha": "c30ad1e",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39102530440"
-          },
-          {
-            "at": "2026-10-18T06:09:29Z",
-            "conclusion": "success",
-            "id": 39103039752,
-            "sha": "97aa9ec",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103039752"
-          },
-          {
-            "at": "2026-10-18T16:24:44Z",
-            "conclusion": "success",
-            "id": 39144872661,
-            "sha": "cd47858",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144872661"
-          },
-          {
-            "at": "2026-10-18T19:04:41Z",
-            "conclusion": "success",
-            "id": 39157089166,
-            "sha": "00bf214",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157089166"
-          },
-          {
-            "at": "2026-10-18T19:22:39Z",
-            "conclusion": "success",
-            "id": 39158485421,
-            "sha": "ea8be52",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158485421"
-          },
-          {
-            "at": "2026-10-18T19:29:27Z",
-            "conclusion": "success",
-            "id": 39158993867,
-            "sha": "8b329d2",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158993867"
-          },
-          {
-            "at": "2026-10-18T19:48:14Z",
-            "conclusion": "success",
-            "id": 39160423009,
-            "sha": "7d9ca7a",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160423009"
-          }
-        ]
+        "runs": []
       },
       "uat": {
-        "count": 12,
+        "count": 0,
         "failed": 0,
-        "runs": [
-          {
-            "at": "2026-10-18T06:10:34Z",
-            "conclusion": "success",
-            "id": 39103106600,
-            "sha": "46ba6b6",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103106600"
-          },
-          {
-            "at": "2026-10-18T06:12:21Z",
-            "conclusion": "success",
-            "id": 39103210766,
-            "sha": "46ba6b6",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39103210766"
-          },
-          {
-            "at": "2026-10-18T16:18:39Z",
-            "conclusion": "success",
-            "id": 39144411856,
-            "sha": "0576f9f",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144411856"
-          },
-          {
-            "at": "2026-10-18T16:24:12Z",
-            "conclusion": "success",
-            "id": 39144832446,
-            "sha": "0576f9f",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39144832446"
-          },
-          {
-            "at": "2026-10-18T19:02:14Z",
-            "conclusion": "success",
-            "id": 39156894343,
-            "sha": "8916ac4",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39156894343"
-          },
-          {
-            "at": "2026-10-18T19:04:04Z",
-            "conclusion": "success",
-            "id": 39157041241,
-            "sha": "8916ac4",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39157041241"
-          },
-          {
-            "at": "2026-10-18T19:21:01Z",
-            "conclusion": "success",
-            "id": 39158360048,
-            "sha": "650c352",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158360048"
-          },
-          {
-            "at": "2026-10-18T19:22:04Z",
-            "conclusion": "success",
-            "id": 39158438861,
-            "sha": "650c352",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158438861"
-          },
-          {
-            "at": "2026-10-18T19:27:45Z",
-            "conclusion": "success",
-            "id": 39158871574,
-            "sha": "fab4ae1",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158871574"
-          },
-          {
-            "at": "2026-10-18T19:29:01Z",
-            "conclusion": "success",
-            "id": 39158964059,
-            "sha": "fab4ae1",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39158964059"
-          },
-          {
-            "at": "2026-10-18T19:46:18Z",
-            "conclusion": "success",
-            "id": 39160277233,
-            "sha": "1a21408",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160277233"
-          },
-          {
-            "at": "2026-10-18T19:47:47Z",
-            "conclusion": "success",
-            "id": 39160388190,
-            "sha": "1a21408",
-            "url": "https://github.com/palermo-sites/annika-site/actions/runs/39160388190"
-          }
-        ]
+        "runs": []
       }
     },
-    "end": "2026-10-19T00:00:00-04:00",
-    "isoWeek": "2026-W42",
+    "end": "2026-10-20T00:00:00-04:00",
+    "isoWeek": "2026-W43",
     "provisional": true,
-    "start": "2026-10-18T00:00:00-04:00"
+    "start": "2026-10-19T00:00:00-04:00"
   },
   "views": {
     "rolling12Months": {
@@ -233,88 +324,132 @@
     },
     "rolling12Weeks": {
       "counts": {
-        "forwardMoves": 0,
-        "itemsDelivered": 0,
-        "itemsStarted": 0,
+        "forwardMoves": 74,
+        "itemsDelivered": 14,
+        "itemsStarted": 16,
         "itemsStopped": 0,
-        "netThroughput": 0,
+        "netThroughput": 74,
         "rework": 0,
-        "wipEndOfDay": 0
+        "wipEndOfDay": 2
       },
-      "days": 0,
+      "days": 1,
       "delivery": {
-        "count": 0,
-        "durationSumDays": 0,
-        "mttdDays": null
+        "count": 14,
+        "durationSumDays": 0.112558,
+        "mttdDays": 0.008
       },
-      "deployments": {},
-      "from": null,
+      "deployments": {
+        "prod": {
+          "count": 13,
+          "failed": 0,
+          "failedShare": 0.0
+        },
+        "uat": {
+          "count": 19,
+          "failed": 0,
+          "failedShare": 0.0
+        }
+      },
+      "from": "2026-10-18",
       "label": "Rolling 12 weeks",
-      "periods": 0,
-      "to": null
+      "periods": 1,
+      "to": "2026-10-18"
     },
     "rolling30": {
       "counts": {
-        "forwardMoves": 0,
-        "itemsDelivered": 0,
-        "itemsStarted": 0,
+        "forwardMoves": 74,
+        "itemsDelivered": 14,
+        "itemsStarted": 16,
         "itemsStopped": 0,
-        "netThroughput": 0,
+        "netThroughput": 74,
         "rework": 0,
-        "wipEndOfDay": 0
+        "wipEndOfDay": 2
       },
-      "days": 0,
+      "days": 1,
       "delivery": {
-        "count": 0,
-        "durationSumDays": 0,
-        "mttdDays": null
+        "count": 14,
+        "durationSumDays": 0.112558,
+        "mttdDays": 0.008
       },
-      "deployments": {},
-      "from": null,
+      "deployments": {
+        "prod": {
+          "count": 13,
+          "failed": 0,
+          "failedShare": 0.0
+        },
+        "uat": {
+          "count": 19,
+          "failed": 0,
+          "failedShare": 0.0
+        }
+      },
+      "from": "2026-10-18",
       "label": "Last 30 days",
-      "to": null
+      "to": "2026-10-18"
     },
     "rolling7": {
       "counts": {
-        "forwardMoves": 0,
-        "itemsDelivered": 0,
-        "itemsStarted": 0,
+        "forwardMoves": 74,
+        "itemsDelivered": 14,
+        "itemsStarted": 16,
         "itemsStopped": 0,
-        "netThroughput": 0,
+        "netThroughput": 74,
         "rework": 0,
-        "wipEndOfDay": 0
+        "wipEndOfDay": 2
       },
-      "days": 0,
+      "days": 1,
       "delivery": {
-        "count": 0,
-        "durationSumDays": 0,
-        "mttdDays": null
+        "count": 14,
+        "durationSumDays": 0.112558,
+        "mttdDays": 0.008
       },
-      "deployments": {},
-      "from": null,
+      "deployments": {
+        "prod": {
+          "count": 13,
+          "failed": 0,
+          "failedShare": 0.0
+        },
+        "uat": {
+          "count": 19,
+          "failed": 0,
+          "failedShare": 0.0
+        }
+      },
+      "from": "2026-10-18",
       "label": "Last 7 days",
-      "to": null
+      "to": "2026-10-18"
     },
     "rolling90": {
       "counts": {
-        "forwardMoves": 0,
-        "itemsDelivered": 0,
-        "itemsStarted": 0,
+        "forwardMoves": 74,
+        "itemsDelivered": 14,
+        "itemsStarted": 16,
         "itemsStopped": 0,
-        "netThroughput": 0,
+        "netThroughput": 74,
         "rework": 0,
-        "wipEndOfDay": 0
+        "wipEndOfDay": 2
       },
-      "days": 0,
+      "days": 1,
       "delivery": {
-        "count": 0,
-        "durationSumDays": 0,
-        "mttdDays": null
+        "count": 14,
+        "durationSumDays": 0.112558,
+        "mttdDays": 0.008
       },
-      "deployments": {},
-      "from": null,
+      "deployments": {
+        "prod": {
+          "count": 13,
+          "failed": 0,
+          "failedShare": 0.0
+        },
+        "uat": {
+          "count": 19,
+          "failed": 0,
+          "failedShare": 0.0
+        }
+      },
+      "from": "2026-10-18",
       "label": "Last 90 days",
-      "to": null
+      "to": "2026-10-18"
     }
   }
 }
