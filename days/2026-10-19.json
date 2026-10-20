@@ -1,0 +1,179 @@
+{
+  "counts": {
+    "forwardMoves": 5,
+    "itemsDelivered": 1,
+    "itemsStarted": 1,
+    "itemsStopped": 0,
+    "netThroughput": 5,
+    "rework": 0,
+    "wipEndOfDay": 0
+  },
+  "date": "2026-10-19",
+  "delivery": {
+    "count": 1,
+    "durationSumDays": 0.001644,
+    "durationsDays": [
+      0.001644
+    ]
+  },
+  "deployments": {
+    "prod": {
+      "count": 1,
+      "failed": 0,
+      "runs": [
+        {
+          "at": "2026-10-19T12:22:11Z",
+          "conclusion": "success",
+          "id": 39251515615,
+          "sha": "573dcee",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39251515615"
+        }
+      ]
+    },
+    "uat": {
+      "count": 2,
+      "failed": 0,
+      "runs": [
+        {
+          "at": "2026-10-19T12:20:28Z",
+          "conclusion": "success",
+          "id": 39251293484,
+          "sha": "4486f72",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39251293484"
+        },
+        {
+          "at": "2026-10-19T12:21:35Z",
+          "conclusion": "success",
+          "id": 39251439025,
+          "sha": "573dcee",
+          "url": "https://github.com/palermo-sites/annika-site/actions/runs/39251439025"
+        }
+      ]
+    }
+  },
+  "end": "2026-10-20T00:00:00-04:00",
+  "history": [],
+  "hours": [
+    {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfHour": 0
+      },
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0
+      },
+      "deployments": {},
+      "hour": "2026-10-19T00:00-04:00",
+      "hourOfDay": 0,
+      "label": "2026-10-19 00:00 EDT"
+    },
+    {
+      "counts": {
+        "forwardMoves": 5,
+        "itemsDelivered": 1,
+        "itemsStarted": 1,
+        "itemsStopped": 0,
+        "netThroughput": 5,
+        "rework": 0,
+        "wipEndOfHour": 0
+      },
+      "delivery": {
+        "count": 1,
+        "durationSumDays": 0.001644
+      },
+      "deployments": {
+        "prod": {
+          "count": 1,
+          "failed": 0
+        },
+        "uat": {
+          "count": 2,
+          "failed": 0
+        }
+      },
+      "hour": "2026-10-19T08:00-04:00",
+      "hourOfDay": 8,
+      "label": "2026-10-19 08:00 EDT"
+    }
+  ],
+  "isoWeek": "2026-W43",
+  "items": {
+    "delivered": [
+      {
+        "at": "2026-10-19T12:22:44Z",
+        "durationDays": 0.001644,
+        "id": "11",
+        "startedAt": "2026-10-19T12:20:22Z",
+        "title": "Scorecard: closed-unmerged PRs are stopped work, not WIP; commit title names the day written",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/11"
+      }
+    ],
+    "started": [
+      {
+        "at": "2026-10-19T12:20:22Z",
+        "id": "11",
+        "title": "Scorecard: closed-unmerged PRs are stopped work, not WIP; commit title names the day written",
+        "type": "Pull Request",
+        "url": "https://github.com/palermo-sites/annika-site/issues/11"
+      }
+    ],
+    "stopped": []
+  },
+  "meta": {
+    "generatedAt": "2026-10-20T11:41:27Z",
+    "runUrl": "https://github.com/palermo-sites/annika-site/actions/runs/39416402823"
+  },
+  "moves": [
+    {
+      "at": "2026-10-19T12:20:22Z",
+      "from": "Created",
+      "id": "11",
+      "kind": "forward",
+      "to": "Development"
+    },
+    {
+      "at": "2026-10-19T12:20:24Z",
+      "from": "Development",
+      "id": "11",
+      "kind": "forward",
+      "to": "In Review"
+    },
+    {
+      "at": "2026-10-19T12:21:33Z",
+      "from": "In Review",
+      "id": "11",
+      "kind": "forward",
+      "to": "Merged"
+    },
+    {
+      "at": "2026-10-19T12:22:18Z",
+      "from": "Merged",
+      "id": "11",
+      "kind": "forward",
+      "to": "UAT"
+    },
+    {
+      "at": "2026-10-19T12:22:44Z",
+      "from": "UAT",
+      "id": "11",
+      "kind": "forward",
+      "to": "Delivered"
+    }
+  ],
+  "schemaVersion": 2,
+  "source": {
+    "cmisVersion": "1.0.0+cb90756",
+    "configHash": "sha256:cdf90916ebcc89d7",
+    "repository": "palermo-sites/annika-site"
+  },
+  "start": "2026-10-19T00:00:00-04:00",
+  "system": "annika",
+  "timeZone": "America/New_York"
+}

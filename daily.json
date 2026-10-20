@@ -259,6 +259,82 @@
         }
       ],
       "isoWeek": "2026-W42"
+    },
+    {
+      "counts": {
+        "forwardMoves": 5,
+        "itemsDelivered": 1,
+        "itemsStarted": 1,
+        "itemsStopped": 0,
+        "netThroughput": 5,
+        "rework": 0,
+        "wipEndOfDay": 0
+      },
+      "date": "2026-10-19",
+      "delivery": {
+        "count": 1,
+        "durationSumDays": 0.001644
+      },
+      "deployments": {
+        "prod": {
+          "count": 1,
+          "failed": 0
+        },
+        "uat": {
+          "count": 2,
+          "failed": 0
+        }
+      },
+      "hours": [
+        {
+          "counts": {
+            "forwardMoves": 0,
+            "itemsDelivered": 0,
+            "itemsStarted": 0,
+            "itemsStopped": 0,
+            "netThroughput": 0,
+            "rework": 0,
+            "wipEndOfHour": 0
+          },
+          "delivery": {
+            "count": 0,
+            "durationSumDays": 0
+          },
+          "deployments": {},
+          "hour": "2026-10-19T00:00-04:00",
+          "hourOfDay": 0,
+          "label": "2026-10-19 00:00 EDT"
+        },
+        {
+          "counts": {
+            "forwardMoves": 5,
+            "itemsDelivered": 1,
+            "itemsStarted": 1,
+            "itemsStopped": 0,
+            "netThroughput": 5,
+            "rework": 0,
+            "wipEndOfHour": 0
+          },
+          "delivery": {
+            "count": 1,
+            "durationSumDays": 0.001644
+          },
+          "deployments": {
+            "prod": {
+              "count": 1,
+              "failed": 0
+            },
+            "uat": {
+              "count": 2,
+              "failed": 0
+            }
+          },
+          "hour": "2026-10-19T08:00-04:00",
+          "hourOfDay": 8,
+          "label": "2026-10-19 08:00 EDT"
+        }
+      ],
+      "isoWeek": "2026-W43"
     }
   ],
   "name": "Annika Palermo",
@@ -268,26 +344,26 @@
   "timeZone": "America/New_York",
   "today": {
     "counts": {
-      "forwardMoves": 5,
-      "itemsDelivered": 1,
-      "itemsStarted": 1,
+      "forwardMoves": 0,
+      "itemsDelivered": 0,
+      "itemsStarted": 0,
       "itemsStopped": 0,
-      "netThroughput": 5,
+      "netThroughput": 0,
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-10-19",
+    "date": "2026-10-20",
     "delivery": {
-      "count": 1,
-      "durationSumDays": 0.001644
+      "count": 0,
+      "durationSumDays": 0
     },
     "deployments": {
       "prod": {
-        "count": 1,
+        "count": 0,
         "failed": 0
       },
       "uat": {
-        "count": 2,
+        "count": 0,
         "failed": 0
       }
     },
@@ -307,37 +383,9 @@
           "durationSumDays": 0
         },
         "deployments": {},
-        "hour": "2026-10-19T00:00-04:00",
+        "hour": "2026-10-20T00:00-04:00",
         "hourOfDay": 0,
-        "label": "2026-10-19 00:00 EDT"
-      },
-      {
-        "counts": {
-          "forwardMoves": 5,
-          "itemsDelivered": 1,
-          "itemsStarted": 1,
-          "itemsStopped": 0,
-          "netThroughput": 5,
-          "rework": 0,
-          "wipEndOfHour": 0
-        },
-        "delivery": {
-          "count": 1,
-          "durationSumDays": 0.001644
-        },
-        "deployments": {
-          "prod": {
-            "count": 1,
-            "failed": 0
-          },
-          "uat": {
-            "count": 2,
-            "failed": 0
-          }
-        },
-        "hour": "2026-10-19T08:00-04:00",
-        "hourOfDay": 8,
-        "label": "2026-10-19 08:00 EDT"
+        "label": "2026-10-20 00:00 EDT"
       }
     ],
     "isoWeek": "2026-W43"
