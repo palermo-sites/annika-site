@@ -10,7 +10,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-10-25",
+    "date": "2026-10-26",
     "delivery": {
       "count": 0,
       "durationSumDays": 0
@@ -41,12 +41,12 @@
           "durationSumDays": 0
         },
         "deployments": {},
-        "hour": "2026-10-25T00:00-04:00",
+        "hour": "2026-10-26T00:00-04:00",
         "hourOfDay": 0,
-        "label": "2026-10-25 00:00 EDT"
+        "label": "2026-10-26 00:00 EDT"
       }
     ],
-    "isoWeek": "2026-W43"
+    "isoWeek": "2026-W44"
   },
   "name": "Annika Palermo",
   "report": "index.html",
@@ -64,7 +64,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "delivery": {
       "count": 0,
       "durationSumDays": 0,
@@ -82,10 +82,10 @@
         "runs": []
       }
     },
-    "end": "2026-10-27T00:00:00-04:00",
+    "end": "2026-10-28T00:00:00-04:00",
     "isoWeek": "2026-W44",
     "provisional": true,
-    "start": "2026-10-26T00:00:00-04:00"
+    "start": "2026-10-27T00:00:00-04:00"
   },
   "views": {
     "rolling12Months": {
@@ -153,7 +153,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 8,
+      "days": 9,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -173,39 +173,39 @@
       },
       "from": "2026-10-18",
       "label": "Last 30 days",
-      "to": "2026-10-25"
+      "to": "2026-10-26"
     },
     "rolling7": {
       "counts": {
-        "forwardMoves": 5,
-        "itemsDelivered": 1,
-        "itemsStarted": 1,
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
         "itemsStopped": 0,
-        "netThroughput": 5,
+        "netThroughput": 0,
         "rework": 0,
         "wipEndOfDay": 0
       },
       "days": 7,
       "delivery": {
-        "count": 1,
-        "durationSumDays": 0.001644,
-        "mttdDays": 0.0016
+        "count": 0,
+        "durationSumDays": 0,
+        "mttdDays": null
       },
       "deployments": {
         "prod": {
-          "count": 1,
+          "count": 0,
           "failed": 0,
-          "failedShare": 0.0
+          "failedShare": null
         },
         "uat": {
-          "count": 2,
+          "count": 0,
           "failed": 0,
-          "failedShare": 0.0
+          "failedShare": null
         }
       },
-      "from": "2026-10-19",
+      "from": "2026-10-20",
       "label": "Last 7 days",
-      "to": "2026-10-25"
+      "to": "2026-10-26"
     },
     "rolling90": {
       "counts": {
@@ -217,7 +217,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 8,
+      "days": 9,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -237,7 +237,7 @@
       },
       "from": "2026-10-18",
       "label": "Last 90 days",
-      "to": "2026-10-25"
+      "to": "2026-10-26"
     }
   }
 }
