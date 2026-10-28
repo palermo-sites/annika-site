@@ -1,0 +1,72 @@
+{
+  "counts": {
+    "forwardMoves": 0,
+    "itemsDelivered": 0,
+    "itemsStarted": 0,
+    "itemsStopped": 0,
+    "netThroughput": 0,
+    "rework": 0,
+    "wipEndOfDay": 0
+  },
+  "date": "2026-10-27",
+  "delivery": {
+    "count": 0,
+    "durationSumDays": 0,
+    "durationsDays": []
+  },
+  "deployments": {
+    "prod": {
+      "count": 0,
+      "failed": 0,
+      "runs": []
+    },
+    "uat": {
+      "count": 0,
+      "failed": 0,
+      "runs": []
+    }
+  },
+  "end": "2026-10-28T00:00:00-04:00",
+  "history": [],
+  "hours": [
+    {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfHour": 0
+      },
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0
+      },
+      "deployments": {},
+      "hour": "2026-10-27T00:00-04:00",
+      "hourOfDay": 0,
+      "label": "2026-10-27 00:00 EDT"
+    }
+  ],
+  "isoWeek": "2026-W44",
+  "items": {
+    "delivered": [],
+    "started": [],
+    "stopped": []
+  },
+  "meta": {
+    "generatedAt": "2026-10-28T12:59:25Z",
+    "runUrl": "https://github.com/palermo-sites/annika-site/actions/runs/40692019423"
+  },
+  "moves": [],
+  "schemaVersion": 2,
+  "source": {
+    "cmisVersion": "1.0.0+cb90756",
+    "configHash": "sha256:cdf90916ebcc89d7",
+    "repository": "palermo-sites/annika-site"
+  },
+  "start": "2026-10-27T00:00:00-04:00",
+  "system": "annika",
+  "timeZone": "America/New_York"
+}
