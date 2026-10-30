@@ -767,6 +767,54 @@
         }
       ],
       "isoWeek": "2026-W44"
+    },
+    {
+      "counts": {
+        "forwardMoves": 0,
+        "itemsDelivered": 0,
+        "itemsStarted": 0,
+        "itemsStopped": 0,
+        "netThroughput": 0,
+        "rework": 0,
+        "wipEndOfDay": 0
+      },
+      "date": "2026-10-29",
+      "delivery": {
+        "count": 0,
+        "durationSumDays": 0
+      },
+      "deployments": {
+        "prod": {
+          "count": 0,
+          "failed": 0
+        },
+        "uat": {
+          "count": 0,
+          "failed": 0
+        }
+      },
+      "hours": [
+        {
+          "counts": {
+            "forwardMoves": 0,
+            "itemsDelivered": 0,
+            "itemsStarted": 0,
+            "itemsStopped": 0,
+            "netThroughput": 0,
+            "rework": 0,
+            "wipEndOfHour": 0
+          },
+          "delivery": {
+            "count": 0,
+            "durationSumDays": 0
+          },
+          "deployments": {},
+          "hour": "2026-10-29T00:00-04:00",
+          "hourOfDay": 0,
+          "label": "2026-10-29 00:00 EDT"
+        }
+      ],
+      "isoWeek": "2026-W44"
     }
   ],
   "name": "Annika Palermo",
@@ -784,7 +832,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "delivery": {
       "count": 0,
       "durationSumDays": 0
@@ -815,9 +863,9 @@
           "durationSumDays": 0
         },
         "deployments": {},
-        "hour": "2026-10-29T00:00-04:00",
+        "hour": "2026-10-30T00:00-04:00",
         "hourOfDay": 0,
-        "label": "2026-10-29 00:00 EDT"
+        "label": "2026-10-30 00:00 EDT"
       }
     ],
     "isoWeek": "2026-W44"
