@@ -10,7 +10,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-10-30",
+    "date": "2026-10-31",
     "delivery": {
       "count": 0,
       "durationSumDays": 0
@@ -41,9 +41,9 @@
           "durationSumDays": 0
         },
         "deployments": {},
-        "hour": "2026-10-30T00:00-04:00",
+        "hour": "2026-10-31T00:00-04:00",
         "hourOfDay": 0,
-        "label": "2026-10-30 00:00 EDT"
+        "label": "2026-10-31 00:00 EDT"
       }
     ],
     "isoWeek": "2026-W44"
@@ -64,7 +64,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-10-31",
+    "date": "2026-11-01",
     "delivery": {
       "count": 0,
       "durationSumDays": 0,
@@ -82,33 +82,44 @@
         "runs": []
       }
     },
-    "end": "2026-11-01T00:00:00-04:00",
+    "end": "2026-11-02T00:00:00-05:00",
     "isoWeek": "2026-W44",
     "provisional": true,
-    "start": "2026-10-31T00:00:00-04:00"
+    "start": "2026-11-01T00:00:00-04:00"
   },
   "views": {
     "rolling12Months": {
       "counts": {
-        "forwardMoves": 0,
-        "itemsDelivered": 0,
-        "itemsStarted": 0,
-        "itemsStopped": 0,
-        "netThroughput": 0,
+        "forwardMoves": 79,
+        "itemsDelivered": 15,
+        "itemsStarted": 17,
+        "itemsStopped": 2,
+        "netThroughput": 79,
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 0,
+      "days": 14,
       "delivery": {
-        "count": 0,
-        "durationSumDays": 0,
-        "mttdDays": null
+        "count": 15,
+        "durationSumDays": 0.114202,
+        "mttdDays": 0.0076
       },
-      "deployments": {},
-      "from": null,
+      "deployments": {
+        "prod": {
+          "count": 14,
+          "failed": 0,
+          "failedShare": 0.0
+        },
+        "uat": {
+          "count": 21,
+          "failed": 0,
+          "failedShare": 0.0
+        }
+      },
+      "from": "2026-10-18",
       "label": "Rolling 12 months",
-      "periods": 0,
-      "to": null
+      "periods": 1,
+      "to": "2026-10-31"
     },
     "rolling12Weeks": {
       "counts": {
@@ -153,7 +164,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 13,
+      "days": 14,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -173,7 +184,7 @@
       },
       "from": "2026-10-18",
       "label": "Last 30 days",
-      "to": "2026-10-30"
+      "to": "2026-10-31"
     },
     "rolling7": {
       "counts": {
@@ -203,9 +214,9 @@
           "failedShare": null
         }
       },
-      "from": "2026-10-24",
+      "from": "2026-10-25",
       "label": "Last 7 days",
-      "to": "2026-10-30"
+      "to": "2026-10-31"
     },
     "rolling90": {
       "counts": {
@@ -217,7 +228,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 13,
+      "days": 14,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -237,7 +248,7 @@
       },
       "from": "2026-10-18",
       "label": "Last 90 days",
-      "to": "2026-10-30"
+      "to": "2026-10-31"
     }
   }
 }
