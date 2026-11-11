@@ -10,7 +10,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-11-09",
+    "date": "2026-11-10",
     "delivery": {
       "count": 0,
       "durationSumDays": 0
@@ -41,9 +41,9 @@
           "durationSumDays": 0
         },
         "deployments": {},
-        "hour": "2026-11-09T00:00-05:00",
+        "hour": "2026-11-10T00:00-05:00",
         "hourOfDay": 0,
-        "label": "2026-11-09 00:00 EST"
+        "label": "2026-11-10 00:00 EST"
       }
     ],
     "isoWeek": "2026-W46"
@@ -64,7 +64,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-11-10",
+    "date": "2026-11-11",
     "delivery": {
       "count": 0,
       "durationSumDays": 0,
@@ -82,10 +82,10 @@
         "runs": []
       }
     },
-    "end": "2026-11-11T00:00:00-05:00",
+    "end": "2026-11-12T00:00:00-05:00",
     "isoWeek": "2026-W46",
     "provisional": true,
-    "start": "2026-11-10T00:00:00-05:00"
+    "start": "2026-11-11T00:00:00-05:00"
   },
   "views": {
     "rolling12Months": {
@@ -164,7 +164,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 23,
+      "days": 24,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -184,7 +184,7 @@
       },
       "from": "2026-10-18",
       "label": "Last 30 days",
-      "to": "2026-11-09"
+      "to": "2026-11-10"
     },
     "rolling7": {
       "counts": {
@@ -214,9 +214,9 @@
           "failedShare": null
         }
       },
-      "from": "2026-11-03",
+      "from": "2026-11-04",
       "label": "Last 7 days",
-      "to": "2026-11-09"
+      "to": "2026-11-10"
     },
     "rolling90": {
       "counts": {
@@ -228,7 +228,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 23,
+      "days": 24,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -248,7 +248,7 @@
       },
       "from": "2026-10-18",
       "label": "Last 90 days",
-      "to": "2026-11-09"
+      "to": "2026-11-10"
     }
   }
 }
