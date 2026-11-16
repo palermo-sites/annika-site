@@ -10,7 +10,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-11-14",
+    "date": "2026-11-15",
     "delivery": {
       "count": 0,
       "durationSumDays": 0
@@ -41,9 +41,9 @@
           "durationSumDays": 0
         },
         "deployments": {},
-        "hour": "2026-11-14T00:00-05:00",
+        "hour": "2026-11-15T00:00-05:00",
         "hourOfDay": 0,
-        "label": "2026-11-14 00:00 EST"
+        "label": "2026-11-15 00:00 EST"
       }
     ],
     "isoWeek": "2026-W46"
@@ -64,7 +64,7 @@
       "rework": 0,
       "wipEndOfDay": 0
     },
-    "date": "2026-11-15",
+    "date": "2026-11-16",
     "delivery": {
       "count": 0,
       "durationSumDays": 0,
@@ -82,10 +82,10 @@
         "runs": []
       }
     },
-    "end": "2026-11-16T00:00:00-05:00",
-    "isoWeek": "2026-W46",
+    "end": "2026-11-17T00:00:00-05:00",
+    "isoWeek": "2026-W47",
     "provisional": true,
-    "start": "2026-11-15T00:00:00-05:00"
+    "start": "2026-11-16T00:00:00-05:00"
   },
   "views": {
     "rolling12Months": {
@@ -131,7 +131,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 22,
+      "days": 29,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -151,8 +151,8 @@
       },
       "from": "2026-10-18",
       "label": "Rolling 12 weeks",
-      "periods": 4,
-      "to": "2026-11-08"
+      "periods": 5,
+      "to": "2026-11-15"
     },
     "rolling30": {
       "counts": {
@@ -164,7 +164,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 28,
+      "days": 29,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -184,7 +184,7 @@
       },
       "from": "2026-10-18",
       "label": "Last 30 days",
-      "to": "2026-11-14"
+      "to": "2026-11-15"
     },
     "rolling7": {
       "counts": {
@@ -214,9 +214,9 @@
           "failedShare": null
         }
       },
-      "from": "2026-11-08",
+      "from": "2026-11-09",
       "label": "Last 7 days",
-      "to": "2026-11-14"
+      "to": "2026-11-15"
     },
     "rolling90": {
       "counts": {
@@ -228,7 +228,7 @@
         "rework": 0,
         "wipEndOfDay": 0
       },
-      "days": 28,
+      "days": 29,
       "delivery": {
         "count": 15,
         "durationSumDays": 0.114202,
@@ -248,7 +248,7 @@
       },
       "from": "2026-10-18",
       "label": "Last 90 days",
-      "to": "2026-11-14"
+      "to": "2026-11-15"
     }
   }
 }
